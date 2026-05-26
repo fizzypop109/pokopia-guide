@@ -13,7 +13,9 @@ export const Stat = ({ label, value }: Props) => {
                 {label}
             </p>
 
-            <p className="text-base font-medium">{value}</p>
+            <div className="text-base font-medium">
+                {value}
+            </div>
         </Card>
     );
 }

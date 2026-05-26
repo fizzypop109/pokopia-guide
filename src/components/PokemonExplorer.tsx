@@ -40,10 +40,10 @@ export function PokemonExplorer({
       if (q && !p.name.toLowerCase().includes(q)) return false;
       if (habitat && p.idealHabitat !== habitat) return false;
       if (type && !p.types.includes(type as PokemonType)) return false;
-      if (location && !p.locations.includes(location)) return false;
+      if (location && !p.localHabitats.some(h => h.locations.includes(location))) return false;
       if (specialty && p.specialty !== specialty) return false;
-      if (rarity && p.rarity !== rarity) return false;
-      return true;
+      return !(rarity && p.localHabitats.some(h => h.rarity !== rarity));
+
     });
   }, [pokemon, query, habitat, type, location, specialty, rarity]);
 

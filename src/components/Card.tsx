@@ -1,5 +1,6 @@
+'use client';
+
 import {ReactNode} from "react";
-import Link from "next/link";
 
 type Props = {
     href?: string;
@@ -11,12 +12,12 @@ export const Card = ({ children, href }: Props) => {
 
     if (href) {
         return (
-            <Link
-                href={href}
-                className={`${STYLE_CLASSES} group hover:border-emerald-400 hover:shadow-md transition flex flex-col gap-3`}
+            <button
+                onClick={() => window.open(href, "_self")}
+                className={`${STYLE_CLASSES} group cursor-pointer hover:border-emerald-400 hover:shadow-md transition flex flex-col gap-3`}
             >
                 {children}
-            </Link>
+            </button>
         )
     }
 
