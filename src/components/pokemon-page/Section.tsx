@@ -14,9 +14,12 @@ export const Section = ({
     return (
         <section className="flex flex-col gap-3">
             <div>
-                <h2 className="text-lg font-semibold">{title}</h2>
+                <h2 className="font-display text-xl font-bold text-leaf-800 flex items-center gap-2">
+                    <span className="h-5 w-1.5 rounded-full bg-leaf-400" />
+                    {title}
+                </h2>
 
-                {hint && <p className="text-sm text-zinc-500">{hint}</p>}
+                {hint && <p className="text-sm text-sand-500 ml-3.5">{hint}</p>}
             </div>
 
             {children}

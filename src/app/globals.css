@@ -1,24 +1,68 @@
 @import "tailwindcss";
 
+/* ---- Pokopia cozy nature theme ---------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf7ea;
+  --foreground: #3c3526;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-nunito);
+  --font-display: var(--font-baloo);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* warm paper / sand neutrals (replaces zinc) */
+  --color-sand-50: #fbf7ea;
+  --color-sand-100: #f5eed9;
+  --color-sand-200: #ece0c4;
+  --color-sand-300: #ddcaa1;
+  --color-sand-400: #c9ad79;
+  --color-sand-500: #ab8d57;
+  --color-sand-600: #897045;
+  --color-sand-700: #6a5638;
+  --color-sand-800: #4a3d2a;
+  --color-sand-900: #332a1d;
+
+  /* leaf green primary (Tangrowth / garden vibe) */
+  --color-leaf-50: #f1f9e8;
+  --color-leaf-100: #ddefc7;
+  --color-leaf-200: #c2e29e;
+  --color-leaf-300: #a2d36f;
+  --color-leaf-400: #84c44f;
+  --color-leaf-500: #6bb23e;
+  --color-leaf-600: #539431;
+  --color-leaf-700: #407327;
+  --color-leaf-800: #345b22;
+  --color-leaf-900: #2b4a1f;
+
+  /* sunny + berry accents */
+  --color-sun-400: #ffd45e;
+  --color-sun-500: #f9c23c;
+  --color-berry-400: #ff8aa6;
+  --color-berry-500: #f76b8d;
+  --color-sky-400: #6fc3f0;
+  --color-sky-500: #4aa8de;
 }
 
 body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  /* soft sunlit garden wash + faint polka dots */
+  background-image:
+    radial-gradient(circle at 12% -5%, #f1f9e8 0%, transparent 45%),
+    radial-gradient(circle at 90% 0%, #fff4d6 0%, transparent 40%),
+    radial-gradient(rgba(107, 178, 62, 0.07) 1.5px, transparent 1.5px);
+  background-size: auto, auto, 22px 22px;
+  background-attachment: fixed;
+}
+
+/* chunky friendly headings */
+.font-display,
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }

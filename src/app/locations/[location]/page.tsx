@@ -23,21 +23,23 @@ export default async function LocationPage({
 }) {
   const { location: raw } = await params;
   const location = decodeURIComponent(raw);
-  const matches = POKEMON.filter((p) => p.locations.includes(location));
+  const matches = POKEMON.filter((p) =>
+    p.localHabitats.some((h) => h.locations.includes(location)),
+  );
   if (matches.length === 0) notFound();
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col gap-8">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8">
       <Link
         href="/locations"
-        className="text-sm text-emerald-600 hover:underline w-fit"
+        className="text-sm font-semibold text-leaf-600 hover:underline w-fit"
       >
         ← All locations
       </Link>
-      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-        {location}
+      <h1 className="font-display text-3xl sm:text-5xl font-bold text-leaf-800">
+        📍 {location}
       </h1>
-      <p className="text-zinc-500">{matches.length} Pokémon found here</p>
+      <p className="text-sand-500">{matches.length} Pokémon found here</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {matches.map((p) => (
           <PokemonCard key={p.slug} pokemon={p} />

@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Baloo_2, Nunito, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { site } from '@/config/site';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const baloo = Baloo_2({
+  variable: '--font-baloo',
+  subsets: ['latin'],
+});
+
+const nunito = Nunito({
+  variable: '--font-nunito',
   subsets: ['latin'],
 });
 
@@ -27,13 +32,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${baloo.variable} ${nunito.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="min-h-full flex flex-col text-sand-800">
         <Header />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-xs text-zinc-500">
-          Pokémon names and data © Nintendo / Game Freak. Fan-made guide.
+        <footer className="mt-8 border-t-2 border-dashed border-sand-300 py-6 text-center text-xs text-sand-500">
+          <span className="inline-flex items-center gap-1.5">
+            <span aria-hidden>🌿</span>
+            Pokémon names and data © Nintendo / Game Freak. Fan-made guide.
+          </span>
         </footer>
       </body>
     </html>

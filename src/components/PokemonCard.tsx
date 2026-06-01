@@ -4,20 +4,21 @@ import {dex, specialtyIcon, spritePath, typeColor} from '@/utils/format';
 import {Card} from "@/components/Card";
 
 const RARITY_COLOR: Record<string, string> = {
-    Common: 'text-zinc-500',
-    Uncommon: 'text-emerald-600',
-    Rare: 'text-blue-600',
-    'Very Rare': 'text-purple-600',
+    Common: 'text-sand-500',
+    Uncommon: 'text-leaf-600',
+    Rare: 'text-sky-500',
+    'Very Rare': 'text-berry-500',
 };
 
 export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
+    const locations = [...new Set(pokemon.localHabitats.flatMap(h => h.locations))];
     return (
         <Card
             href={`/pokemon/${pokemon.slug}`}
         >
             <div className="flex items-start gap-3">
                 <div
-                    className="shrink-0 w-20 h-20 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 flex items-center justify-center overflow-hidden">
+                    className="shrink-0 w-20 h-20 rounded-2xl bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden">
                     <Image
                         src={spritePath(pokemon.dexNumber)}
                         alt={pokemon.name}
@@ -30,15 +31,15 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                 <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                            <div className="text-xs text-left font-mono text-zinc-500">
+                            <div className="text-xs text-left font-mono text-sand-400">
                                 {dex(pokemon.dexNumber)}
                             </div>
 
-                            <h3 className="font-semibold text-base text-left group-hover:text-emerald-600 transition truncate">
+                            <h3 className="font-display font-bold text-base text-left text-sand-800 group-hover:text-leaf-600 transition truncate">
                                 {pokemon.name}
                             </h3>
 
-                            <div className="text-xs text-zinc-500 truncate">
+                            <div className="text-xs text-sand-500 truncate">
                                 {pokemon.classification}
                             </div>
                         </div>
@@ -69,9 +70,28 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                 ))}
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-zinc-500">
+            {locations.length > 0 && (
+                <div className="flex flex-col gap-1">
+                    <span className="text-[0.65rem] font-bold uppercase tracking-wider text-leaf-600">
+                        Found at
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                        {locations.map(loc => (
+                            <span
+                                key={loc}
+                                className="flex items-center gap-0.5 text-xs px-2 py-0.5 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200"
+                            >
+                                <span aria-hidden>📍</span>
+                                {loc}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            <div className="mt-auto flex flex-wrap items-end gap-x-4 gap-y-2 text-xs text-sand-500">
                 {pokemon.specialties.map(s => (
-                    <div key={s} className="flex flex-col h-full items-center justify-end gap-1">
+                    <div key={s} className="flex flex-col items-center justify-end gap-1">
                         <Image
                             src={specialtyIcon(s)}
                             alt=""
@@ -80,7 +100,7 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                             className="object-contain"
                         />
 
-                        <span className="font-medium text-zinc-700 dark:text-zinc-300">
+                        <span className="font-medium text-sand-700">
                             {s}
                         </span>
                     </div>

@@ -9,7 +9,7 @@ type Props = {
 export const Stat = ({ label, value }: Props) => {
     return (
         <Card>
-            <p className="text-xs uppercase tracking-wider text-zinc-500 mb-1">
+            <p className="text-xs font-bold uppercase tracking-wider text-leaf-600 mb-1">
                 {label}
             </p>
 

@@ -41,8 +41,8 @@ export function PokemonExplorer({
       if (habitat && p.idealHabitat !== habitat) return false;
       if (type && !p.types.includes(type as PokemonType)) return false;
       if (location && !p.localHabitats.some(h => h.locations.includes(location))) return false;
-      if (specialty && p.specialty !== specialty) return false;
-      return !(rarity && p.localHabitats.some(h => h.rarity !== rarity));
+      if (specialty && !p.specialties.includes(specialty as Specialty)) return false;
+      return !(rarity && !p.localHabitats.some(h => h.rarity === rarity));
 
     });
   }, [pokemon, query, habitat, type, location, specialty, rarity]);
@@ -66,7 +66,7 @@ export function PokemonExplorer({
         placeholder="Search by name…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+        className="rounded-full border-2 border-sand-200 bg-white px-5 py-2.5 text-sm shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
       />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         <Select
@@ -101,13 +101,13 @@ export function PokemonExplorer({
         />
       </div>
       <div className="flex items-center gap-3 text-sm">
-        <span className="text-zinc-500">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf-100 px-3 py-1 font-semibold text-leaf-700">
           {filtered.length} of {pokemon.length}
         </span>
         {hasFilter && (
           <button
             onClick={reset}
-            className="ml-auto text-emerald-600 hover:underline"
+            className="ml-auto font-semibold text-berry-500 hover:underline"
           >
             Clear filters
           </button>
@@ -115,7 +115,8 @@ export function PokemonExplorer({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-300 dark:border-zinc-800 p-12 text-center text-zinc-500">
+        <div className="rounded-2xl border-2 border-dashed border-sand-300 bg-white/60 p-12 text-center text-sand-500">
+          <span className="block text-4xl mb-2">🍃</span>
           No Pokémon match those filters.
         </div>
       ) : (
@@ -144,7 +145,7 @@ function Select({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+      className="rounded-full border-2 border-sand-200 bg-white px-4 py-2 text-sm shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (

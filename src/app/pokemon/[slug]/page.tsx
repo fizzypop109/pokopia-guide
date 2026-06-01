@@ -6,10 +6,10 @@ import {dex, specialtyIcon, spritePath, typeColor} from '@/utils/format';
 import {Card, Chips, Section, Stat} from "@/components";
 
 const RARITY_COLOR: Record<string, string> = {
-    Common: 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300',
-    Uncommon: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
-    Rare: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-    'Very Rare': 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
+    Common: 'bg-sand-100 text-sand-700 ring-1 ring-sand-200',
+    Uncommon: 'bg-leaf-100 text-leaf-700 ring-1 ring-leaf-200',
+    Rare: 'bg-sky-400/20 text-sky-600 ring-1 ring-sky-400/40',
+    'Very Rare': 'bg-berry-400/20 text-berry-500 ring-1 ring-berry-400/40',
 };
 
 export function generateStaticParams() {
@@ -40,17 +40,17 @@ export default async function PokemonPage({
     if (!p) notFound();
 
     return (
-        <div className="mx-auto max-w-4xl px-6 py-10 flex flex-col gap-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8">
             <Link
                 href="/"
-                className="text-sm text-emerald-600 hover:underline w-fit"
+                className="text-sm font-semibold text-leaf-600 hover:underline w-fit"
             >
                 ← All Pokémon
             </Link>
 
-            <header className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <header className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-6">
                 <div
-                    className="shrink-0 w-48 h-48 rounded-2xl bg-linear-to-br from-emerald-50 to-zinc-100 dark:from-emerald-950/40 dark:to-zinc-900 flex items-center justify-center p-4">
+                    className="shrink-0 w-40 h-40 sm:w-48 sm:h-48 rounded-3xl bg-gradient-to-br from-leaf-100 via-leaf-50 to-sun-400/20 ring-2 ring-leaf-200 flex items-center justify-center p-4">
                     <Image
                         src={spritePath(p.dexNumber)}
                         alt={p.name}
@@ -61,18 +61,18 @@ export default async function PokemonPage({
                     />
                 </div>
 
-                <div className="flex flex-col gap-3 min-w-0">
+                <div className="flex flex-col items-center sm:items-start gap-3 min-w-0">
                     <div className="flex items-center gap-3 text-sm">
-                        <span className="font-mono text-zinc-500">{dex(p.dexNumber)}</span>
+                        <span className="font-mono text-sand-400">{dex(p.dexNumber)}</span>
 
 
                     </div>
 
-                    <h1 className="text-4xl font-bold tracking-tight">{p.name}</h1>
+                    <h1 className="font-display text-4xl sm:text-5xl font-bold text-leaf-800">{p.name}</h1>
 
-                    <div className="text-zinc-500">{p.classification}</div>
+                    <div className="text-sand-500">{p.classification}</div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                         {p.types.map((t) => (
                             <span
                                 key={t}
@@ -85,9 +85,11 @@ export default async function PokemonPage({
                 </div>
             </header>
 
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                {p.description}
-            </p>
+            {p.description && (
+                <p className="rounded-2xl border-2 border-sand-200 bg-white/70 p-5 text-lg text-sand-700 leading-relaxed shadow-[0_2px_0_0_rgba(193,170,121,0.4)]">
+                    {p.description}
+                </p>
+            )}
 
             <section className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <Stat label="Height" value={p.height}/>
@@ -117,57 +119,70 @@ export default async function PokemonPage({
                 <Stat
                     label="Ideal Habitat"
                     value={
-                        <Link
-                            href={`/habitats/${encodeURIComponent(p.idealHabitat.toLowerCase())}`}
-                            className="text-emerald-600 hover:underline"
-                        >
+                        <span className="inline-block rounded-full bg-leaf-100 px-3 py-0.5 text-sm font-semibold text-leaf-700 ring-1 ring-leaf-200">
                             {p.idealHabitat}
-                        </Link>
+                        </span>
                     }
                 />
             </section>
 
             <Section title="Local Habitats" hint="Specific spots where they nest">
-                <div className="flex flex-row gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {p.localHabitats.map(h => {
                         const habitatSlug = h.name.toLowerCase().replace(/\s/g, "-");
                         return (
                             <Card key={h.name} href={`/habitats/${habitatSlug}`}>
-                                <div className="flex flex-col items-center gap-3">
-                                    <Image
-                                        alt={h.name}
-                                        width={100}
-                                        height={50}
-                                        src={`/habitats/${habitatSlug}.png`}
-                                    />
+                                {/* Header: art + name + rarity */}
+                                <div className="flex items-center gap-3">
+                                    <div className="shrink-0 w-24 h-14 rounded-xl bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden">
+                                        <Image
+                                            alt={h.name}
+                                            width={100}
+                                            height={50}
+                                            src={`/habitats/${habitatSlug}.png`}
+                                            className="object-contain"
+                                        />
+                                    </div>
 
-                                    <p className="text-base font-medium group-hover:text-emerald-600 transition">
-                                        {h.name}
-                                    </p>
-
-                                    <span
-                                        className={`px-2 py-0.5 rounded-full font-medium ${RARITY_COLOR[h.rarity]}`}
-                                    >
-                                  {h.rarity}
-                              </span>
-
-                                    <ul className="flex flex-wrap gap-2">
-                                        {h.locations.map((loc) => (
-                                            <li key={loc}>
-                                                <Link
-                                                    href={`/locations/${encodeURIComponent(loc)}`}
-                                                    className="text-sm px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition"
-                                                >
-                                                    {loc}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    <Chips items={h.availableTimes}/>
-
-                                    <Chips items={h.availableWeather}/>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="font-display text-base font-bold text-sand-800 group-hover:text-leaf-600 transition truncate">
+                                            {h.name}
+                                        </p>
+                                        <span
+                                            className={`mt-1 inline-block text-xs px-2 py-0.5 rounded-full font-semibold ${RARITY_COLOR[h.rarity]}`}
+                                        >
+                                            {h.rarity}
+                                        </span>
+                                    </div>
                                 </div>
+
+                                <div className="border-t-2 border-dashed border-sand-200" />
+
+                                {/* Details */}
+                                <dl className="flex flex-col gap-3">
+                                    <DetailRow label="Found at">
+                                        <ul className="flex flex-wrap gap-1.5">
+                                            {h.locations.map((loc) => (
+                                                <li key={loc}>
+                                                    <Link
+                                                        href={`/locations/${encodeURIComponent(loc)}`}
+                                                        className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200 hover:bg-leaf-100 hover:text-leaf-700 transition"
+                                                    >
+                                                        {loc}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </DetailRow>
+
+                                    <DetailRow label="Time">
+                                        <Chips items={h.availableTimes}/>
+                                    </DetailRow>
+
+                                    <DetailRow label="Weather">
+                                        <Chips items={h.availableWeather}/>
+                                    </DetailRow>
+                                </dl>
                             </Card>
                         )
                     })}
@@ -179,13 +194,24 @@ export default async function PokemonPage({
                     {p.favorites.map((f) => (
                         <li
                             key={f}
-                            className="text-sm px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
+                            className="flex items-center gap-2 text-sm px-3 py-2 rounded-xl bg-leaf-50 text-sand-700 ring-1 ring-leaf-100 before:content-['🍓']"
                         >
                             {f}
                         </li>
                     ))}
                 </ul>
             </Section>
+        </div>
+    );
+}
+
+function DetailRow({label, children}: { label: string; children: React.ReactNode }) {
+    return (
+        <div className="flex flex-col gap-1.5">
+            <dt className="text-xs font-bold uppercase tracking-wider text-leaf-600">
+                {label}
+            </dt>
+            <dd>{children}</dd>
         </div>
     );
 }
