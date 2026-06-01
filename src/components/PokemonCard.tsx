@@ -73,6 +73,7 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                 ))}
             </div>
 
+            {(anywhere || locations.length > 0) && (
             <div className="flex flex-col gap-1">
                 <span className="text-[0.65rem] font-bold uppercase tracking-wider text-leaf-600">
                     Found at
@@ -96,6 +97,7 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                     )}
                 </div>
             </div>
+            )}
 
             <div className="mt-auto flex flex-wrap items-end gap-x-4 gap-y-2 text-xs text-sand-500">
                 {pokemon.specialties.map(s => (

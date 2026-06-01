@@ -20,6 +20,8 @@ const IDEAL_HABITAT_ICON: Record<string, string> = {
   Humid: '🌫️',
   Dim: '🌙',
   Damp: '💧',
+  Dry: '🌵',
+  Dark: '🌑',
   Cold: '❄️',
   Hot: '🔥',
   Windy: '🌬️',
