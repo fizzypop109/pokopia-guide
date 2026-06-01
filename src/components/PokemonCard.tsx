@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type {Pokemon} from '@/data/pokemon';
+import {isAnyLocation, type LocationName, type Pokemon} from '@/data/pokemon';
 import {dex, specialtyIcon, spritePath, typeColor} from '@/utils/format';
 import {Card} from "@/components/Card";
 
@@ -11,7 +11,10 @@ const RARITY_COLOR: Record<string, string> = {
 };
 
 export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
-    const locations = [...new Set(pokemon.localHabitats.flatMap(h => h.locations))];
+    const anywhere = pokemon.localHabitats.some(h => isAnyLocation(h.locations));
+    const locations: LocationName[] = anywhere
+        ? []
+        : [...new Set(pokemon.localHabitats.flatMap(h => h.locations as LocationName[]))];
     return (
         <Card
             href={`/pokemon/${pokemon.slug}`}
@@ -70,13 +73,18 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                 ))}
             </div>
 
-            {locations.length > 0 && (
-                <div className="flex flex-col gap-1">
-                    <span className="text-[0.65rem] font-bold uppercase tracking-wider text-leaf-600">
-                        Found at
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                        {locations.map(loc => (
+            <div className="flex flex-col gap-1">
+                <span className="text-[0.65rem] font-bold uppercase tracking-wider text-leaf-600">
+                    Found at
+                </span>
+                <div className="flex flex-wrap gap-1">
+                    {anywhere ? (
+                        <span className="flex items-center gap-0.5 text-xs px-2 py-0.5 rounded-full bg-leaf-100 text-leaf-700 ring-1 ring-leaf-200">
+                            <span aria-hidden>🗺️</span>
+                            Any location
+                        </span>
+                    ) : (
+                        locations.map(loc => (
                             <span
                                 key={loc}
                                 className="flex items-center gap-0.5 text-xs px-2 py-0.5 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200"
@@ -84,10 +92,10 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                                 <span aria-hidden>📍</span>
                                 {loc}
                             </span>
-                        ))}
-                    </div>
+                        ))
+                    )}
                 </div>
-            )}
+            </div>
 
             <div className="mt-auto flex flex-wrap items-end gap-x-4 gap-y-2 text-xs text-sand-500">
                 {pokemon.specialties.map(s => (

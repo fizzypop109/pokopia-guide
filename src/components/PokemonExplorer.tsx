@@ -1,12 +1,13 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type {
-  IdealHabitat,
-  Pokemon,
-  PokemonType,
-  Rarity,
-  Specialty,
+import {
+  habitatHasLocation,
+  type IdealHabitat,
+  type Pokemon,
+  type PokemonType,
+  type Rarity,
+  type Specialty,
 } from '@/data/pokemon';
 import { PokemonCard } from './PokemonCard';
 
@@ -40,7 +41,7 @@ export function PokemonExplorer({
       if (q && !p.name.toLowerCase().includes(q)) return false;
       if (habitat && p.idealHabitat !== habitat) return false;
       if (type && !p.types.includes(type as PokemonType)) return false;
-      if (location && !p.localHabitats.some(h => h.locations.includes(location))) return false;
+      if (location && !p.localHabitats.some(h => habitatHasLocation(h.locations, location))) return false;
       if (specialty && !p.specialties.includes(specialty as Specialty)) return false;
       return !(rarity && !p.localHabitats.some(h => h.rarity === rarity));
 
@@ -145,7 +146,13 @@ function Select({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="rounded-full border-2 border-sand-200 bg-white px-4 py-2 text-sm shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
+      className="appearance-none rounded-full border-2 border-sand-200 bg-white pl-4 pr-10 py-2 text-sm shadow-sm bg-no-repeat focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23539431' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
+        backgroundPosition: 'right 0.85rem center',
+        backgroundSize: '0.9rem',
+      }}
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (

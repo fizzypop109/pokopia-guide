@@ -69,12 +69,51 @@ export type Specialty =
   | 'Water'
   | 'Yawn';
 
+export type LocationName =
+  | 'Withered Wastelands'
+  | 'Bleak Beach'
+  | 'Rocky Ridges'
+  | 'Sparkling Skylands'
+  | 'Palette Town'
+  | 'Cloud Island';
+
+export const LOCATIONS: LocationName[] = [
+  'Withered Wastelands',
+  'Bleak Beach',
+  'Rocky Ridges',
+  'Sparkling Skylands',
+  'Palette Town',
+  'Cloud Island',
+];
+
+/**
+ * Habitats can be built in any location. `locations` is where you must build
+ * this habitat to attract the Pokémon: `'any'` means any location works, while
+ * a list means the Pokémon only appears when the habitat is built there.
+ */
+export type HabitatLocations = LocationName[] | 'any';
+
 export type Habitat = {
   name: string;
-  locations: string[];
+  locations: HabitatLocations;
   rarity: Rarity;
   availableTimes: TimeOfDay[];
   availableWeather: Weather[];
+}
+
+export function resolveLocations(locations: HabitatLocations): LocationName[] {
+  return locations === 'any' ? LOCATIONS : locations;
+}
+
+export function isAnyLocation(locations: HabitatLocations): boolean {
+  return locations === 'any' || locations.length === LOCATIONS.length;
+}
+
+export function habitatHasLocation(
+  locations: HabitatLocations,
+  location: string,
+): boolean {
+  return locations === 'any' || (locations as string[]).includes(location);
 }
 
 export interface Pokemon {
@@ -107,28 +146,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tall Grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Bench with greenery",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -156,28 +181,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Field of Flowers",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Bench with greenery",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -205,28 +216,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Field of Flowers",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Garden Terrace",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -254,14 +251,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tall Grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -291,14 +281,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Campsite",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -326,28 +309,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tall Grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Very Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud'],
       },
       {
         name: "Berry-feast Campsite",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud'],
@@ -375,28 +344,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tall Grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Hydrated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -424,14 +379,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Hydrated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -459,28 +407,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Hydrated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Very Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Floating in the shade",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -508,28 +442,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Elevated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Pretty flower bed",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -558,28 +478,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Elevated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Pretty flower bed",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -607,14 +513,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Luxury chirp-chirp meal",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -642,14 +541,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tall Grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -677,14 +569,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tropical vibes",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -712,14 +597,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Chansey Resting area",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -747,14 +625,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Chansey Resting area",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -782,28 +653,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Elevated flower bed",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Flower garden",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -831,28 +688,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Elevated flower bed",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Flower garden",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -880,28 +723,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Illuminated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Illuminated bench",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -929,28 +758,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Illuminated tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Illuminated bench",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -978,14 +793,7 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Tree-shaded tall grass",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -1013,28 +821,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Flowery table",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Irresistible scent and glow",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -1062,28 +856,14 @@ export const POKEMON: Pokemon[] = [
     localHabitats: [
       {
         name: "Flowery table",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Very Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
       },
       {
         name: "Irresistible scent and glow",
-        locations: [
-          'Withered Wastelands',
-          'Bleak Beach',
-          'Rocky Ridges',
-          'Sparkling Skylands',
-          'Palette Town',
-          'Cloud Island',
-        ],
+        locations: 'any',
         rarity: 'Rare',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
         availableWeather: ['Sun', 'Cloud', 'Rain'],
@@ -1098,6 +878,139 @@ export const POKEMON: Pokemon[] = [
       'Bitter flavors',
     ],
   },
+  {
+    slug: 'slowpoke',
+    dexNumber: 24,
+    name: 'Slowpoke',
+    classification: 'Dopey Pokémon',
+    types: ['Water', 'Psychic'],
+    height: '3\'11" (1.2m)',
+    weight: '79.4lbs (36 kg)',
+    specialties: ['Water', 'Yawn'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Seaside Tall Grass",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Strange stuff',
+      'Soft stuff',
+      'Healing',
+      'Dry flavors',
+    ],
+  },
+  {
+    slug: 'slowbro',
+    dexNumber: 25,
+    name: 'Slowbro',
+    classification: 'Hermit Crab Pokémon',
+    types: ['Water', 'Psychic'],
+    height: '5\'03" (1.6m)',
+    weight: '173.1lbs (78.5 kg)',
+    specialties: ['Water', 'Trade'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Seaside Tall Grass",
+        locations: 'any',
+        rarity: 'Very Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Bed with a plush",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Strange stuff',
+      'Group Activities',
+      'Healing',
+      'Dry flavors',
+    ],
+  },
+  {
+    slug: 'slowking',
+    dexNumber: 26,
+    name: 'Slowking',
+    classification: 'Royal Pokémon',
+    types: ['Water', 'Psychic'],
+    height: '6\'07" (2.0m)',
+    weight: '175.3lbs (79.5 kg)',
+    specialties: ['Water', 'Teleport'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Seaside Tall Grass",
+        locations: 'any',
+        rarity: 'Very Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Bed with a plush",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Fishing pond",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Strange stuff',
+      'Group Activities',
+      'Healing',
+      'Sour flavors',
+    ],
+  },
+  {
+    slug: 'magnemite',
+    dexNumber: 27,
+    name: 'Magnemite',
+    classification: 'Magnet Pokémon',
+    types: ['Electric', 'Steel'],
+    height: '1\'00" (0.3m)',
+    weight: '13.2lbs (6 kg)',
+    specialties: ['Generate'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Factory Storage",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Electronics',
+      'Metal stuff',
+      'Shiny stuff',
+      'Hard stuff',
+      'Group Activities',
+      'Bitter flavors',
+    ],
+  },
 ];
 
 export function getPokemonBySlug(slug: string): Pokemon | undefined {
@@ -1108,8 +1021,8 @@ export function allIdealHabitats(): IdealHabitat[] {
   return Array.from(new Set(POKEMON.map((p) => p.idealHabitat))).sort() as IdealHabitat[];
 }
 
-export function allLocations(): string[] {
-  return Array.from(new Set(POKEMON.flatMap((p) => p.localHabitats.flatMap((h) => h.locations)))).sort();
+export function allLocations(): LocationName[] {
+  return [...LOCATIONS].sort();
 }
 
 export function allTypes(): PokemonType[] {
@@ -1135,14 +1048,14 @@ export type HabitatResident = {
   rarity: Rarity;
   availableTimes: TimeOfDay[];
   availableWeather: Weather[];
-  locations: string[];
+  locations: HabitatLocations;
 };
 
 export type AggregatedHabitat = {
   name: string;
   slug: string;
   types: PokemonType[];
-  locations: string[];
+  locations: LocationName[];
   availableTimes: TimeOfDay[];
   availableWeather: Weather[];
   rarities: Rarity[];
@@ -1177,7 +1090,7 @@ function aggregateHabitats(): Map<string, AggregatedHabitat> {
         locations: h.locations,
       });
       entry.types.push(...pokemon.types);
-      entry.locations.push(...h.locations);
+      entry.locations.push(...resolveLocations(h.locations));
       entry.availableTimes.push(...h.availableTimes);
       entry.availableWeather.push(...h.availableWeather);
       entry.rarities.push(h.rarity);

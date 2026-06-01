@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { POKEMON, allLocations } from '@/data/pokemon';
+import { POKEMON, allLocations, habitatHasLocation } from '@/data/pokemon';
 
 export const metadata = { title: 'Locations — Pokopia Guide' };
 
@@ -13,7 +13,7 @@ export default function LocationsPage() {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {locations.map((loc) => {
           const count = POKEMON.filter((p) =>
-            p.localHabitats.some((h) => h.locations.includes(loc)),
+            p.localHabitats.some((h) => habitatHasLocation(h.locations, loc)),
           ).length;
           return (
             <li key={loc}>

@@ -104,7 +104,10 @@ export default async function HabitatPage({
         />
       </section>
 
-      <Section title="Found at" hint="Locations where this spot appears">
+      <Section
+        title="Build in"
+        hint="This habitat can be built in any location — jump to one to see who's around"
+      >
         <ul className="flex flex-wrap gap-2">
           {habitat.locations.map((loc) => (
             <li key={loc}>

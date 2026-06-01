@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { POKEMON, allLocations } from '@/data/pokemon';
+import { POKEMON, allLocations, habitatHasLocation } from '@/data/pokemon';
 import { PokemonCard } from '@/components/PokemonCard';
 
 export function generateStaticParams() {
@@ -24,7 +24,7 @@ export default async function LocationPage({
   const { location: raw } = await params;
   const location = decodeURIComponent(raw);
   const matches = POKEMON.filter((p) =>
-    p.localHabitats.some((h) => h.locations.includes(location)),
+    p.localHabitats.some((h) => habitatHasLocation(h.locations, location)),
   );
   if (matches.length === 0) notFound();
 

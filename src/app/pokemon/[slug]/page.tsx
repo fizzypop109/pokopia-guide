@@ -160,19 +160,25 @@ export default async function PokemonPage({
 
                                 {/* Details */}
                                 <dl className="flex flex-col gap-3">
-                                    <DetailRow label="Found at">
-                                        <ul className="flex flex-wrap gap-1.5">
-                                            {h.locations.map((loc) => (
-                                                <li key={loc}>
-                                                    <Link
-                                                        href={`/locations/${encodeURIComponent(loc)}`}
-                                                        className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200 hover:bg-leaf-100 hover:text-leaf-700 transition"
-                                                    >
-                                                        {loc}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <DetailRow label="Build in">
+                                        {h.locations === 'any' ? (
+                                            <span className="inline-flex items-center gap-1 text-sm px-3 py-1 rounded-full bg-leaf-100 text-leaf-700 ring-1 ring-leaf-200">
+                                                🗺️ Any location
+                                            </span>
+                                        ) : (
+                                            <ul className="flex flex-wrap gap-1.5">
+                                                {h.locations.map((loc) => (
+                                                    <li key={loc}>
+                                                        <Link
+                                                            href={`/locations/${encodeURIComponent(loc)}`}
+                                                            className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200 hover:bg-leaf-100 hover:text-leaf-700 transition"
+                                                        >
+                                                            📍 {loc}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </DetailRow>
 
                                     <DetailRow label="Time">
