@@ -106,17 +106,14 @@ export default async function HabitatPage({
 
       <Section
         title="Build in"
-        hint="This habitat can be built in any location — jump to one to see who's around"
+        hint="Locations where you can build this habitat"
       >
         <ul className="flex flex-wrap gap-2">
           {habitat.locations.map((loc) => (
             <li key={loc}>
-              <Link
-                href={`/locations/${encodeURIComponent(loc)}`}
-                className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200 hover:bg-leaf-100 hover:text-leaf-700 transition"
-              >
+              <span className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200">
                 📍 {loc}
-              </Link>
+              </span>
             </li>
           ))}
         </ul>

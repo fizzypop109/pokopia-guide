@@ -34,6 +34,7 @@ export function PokemonExplorer({
   const [location, setLocation] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [rarity, setRarity] = useState('');
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -60,6 +61,10 @@ export function PokemonExplorer({
   const hasFilter =
     query || habitat || type || location || specialty || rarity;
 
+  const activeCount = [habitat, type, location, specialty, rarity].filter(
+    Boolean,
+  ).length;
+
   return (
     <div className="flex flex-col gap-4">
       <input
@@ -69,7 +74,32 @@ export function PokemonExplorer({
         onChange={(e) => setQuery(e.target.value)}
         className="rounded-full border-2 border-sand-200 bg-white px-5 py-2.5 text-sm shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
       />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      <button
+        type="button"
+        onClick={() => setFiltersOpen((o) => !o)}
+        aria-expanded={filtersOpen}
+        aria-controls="filter-grid"
+        className="lg:hidden inline-flex items-center justify-between gap-2 rounded-full border-2 border-sand-200 bg-white px-5 py-2.5 text-sm font-semibold text-sand-700 shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
+      >
+        <span className="inline-flex items-center gap-2">
+          🔎 Filters
+          {activeCount > 0 && (
+            <span className="rounded-full bg-leaf-100 px-2 py-0.5 text-xs font-bold text-leaf-700">
+              {activeCount}
+            </span>
+          )}
+        </span>
+        <span
+          aria-hidden
+          className={`transition-transform ${filtersOpen ? 'rotate-180' : ''}`}
+        >
+          ▾
+        </span>
+      </button>
+      <div
+        id="filter-grid"
+        className={`${filtersOpen ? 'grid' : 'hidden'} lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3`}
+      >
         <Select
           value={location}
           onChange={setLocation}

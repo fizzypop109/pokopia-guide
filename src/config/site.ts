@@ -5,6 +5,5 @@ export const site = {
 
 export const nav = [
   { href: '/', label: 'All Pokémon' },
-  { href: '/locations', label: 'Locations' },
   { href: '/habitats', label: 'Habitats' },
 ] as const;

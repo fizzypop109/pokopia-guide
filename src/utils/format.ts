@@ -6,6 +6,18 @@ export function spritePath(n: number): string {
   return `/pokemon/${n.toString().padStart(3, '0')}.png`;
 }
 
+/**
+ * Sprite for a Pokemon entry, preferring an explicit `spriteUrl` (used by
+ * variant entries that share a dexNumber with their base form) and falling
+ * back to the numbered default.
+ */
+export function pokemonSprite(p: {
+  dexNumber: number;
+  spriteUrl?: string;
+}): string {
+  return p.spriteUrl ?? spritePath(p.dexNumber);
+}
+
 export function specialtyIcon(specialty: string): string {
   return `/specialties/${specialty.toLowerCase().replace(/\s+/g, '')}.png`;
 }
@@ -23,6 +35,7 @@ const IDEAL_HABITAT_ICON: Record<string, string> = {
   Dry: '🌵',
   Dark: '🌑',
   Cold: '❄️',
+  Cool: '🧊',
   Hot: '🔥',
   Windy: '🌬️',
   Rocky: '🪨',

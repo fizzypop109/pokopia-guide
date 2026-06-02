@@ -8,12 +8,10 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-10 border-b-2 border-leaf-700/30 bg-leaf-500/90 backdrop-blur shadow-[0_2px_0_0_rgba(64,115,39,0.35)]">
+    <header className="sticky top-0 z-50 border-b-2 border-leaf-700/30 bg-leaf-500/90 backdrop-blur shadow-[0_2px_0_0_rgba(64,115,39,0.35)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-white shadow-sm text-xl transition group-hover:rotate-12 group-hover:scale-110">
-            🌿
-          </span>
+          <img src="/logo-pokopia.png" alt="Pokopia logo" className="w-[100px] transition group-hover:rotate-12 group-hover:scale-110" />
           <span className="font-display font-bold text-lg sm:text-xl text-white drop-shadow-[0_1px_0_rgba(64,115,39,0.6)]">
             {site.name}
           </span>

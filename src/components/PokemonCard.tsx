@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import {isAnyLocation, type LocationName, type Pokemon} from '@/data/pokemon';
-import {dex, specialtyIcon, spritePath, typeColor} from '@/utils/format';
+import Link from 'next/link';
+import {habitatSlug, isAnyLocation, type LocationName, type Pokemon} from '@/data/pokemon';
+import {dex, specialtyIcon, pokemonSprite, typeColor} from '@/utils/format';
 import {Card} from "@/components/Card";
 
 const RARITY_COLOR: Record<string, string> = {
@@ -15,15 +16,17 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
     const locations: LocationName[] = anywhere
         ? []
         : [...new Set(pokemon.localHabitats.flatMap(h => h.locations as LocationName[]))];
+    const habitats = [...new Set(pokemon.localHabitats.map(h => h.name))];
     return (
         <Card
             href={`/pokemon/${pokemon.slug}`}
+            label={pokemon.name}
         >
             <div className="flex items-start gap-3">
                 <div
                     className="shrink-0 w-20 h-20 rounded-2xl bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden">
                     <Image
-                        src={spritePath(pokemon.dexNumber)}
+                        src={pokemonSprite(pokemon)}
                         alt={pokemon.name}
                         width={80}
                         height={80}
@@ -95,6 +98,26 @@ export function PokemonCard({pokemon}: { pokemon: Pokemon }) {
                             </span>
                         ))
                     )}
+                </div>
+            </div>
+            )}
+
+            {habitats.length > 0 && (
+            <div className="flex flex-col gap-1">
+                <span className="text-[0.65rem] font-bold uppercase tracking-wider text-leaf-600">
+                    Habitats
+                </span>
+                <div className="flex flex-wrap gap-1">
+                    {habitats.map(name => (
+                        <Link
+                            key={name}
+                            href={`/habitats/${habitatSlug(name)}`}
+                            className="relative z-10 flex items-center gap-0.5 text-xs px-2 py-0.5 rounded-full bg-leaf-50 text-leaf-700 ring-1 ring-leaf-200 hover:bg-leaf-100 hover:ring-leaf-300 transition"
+                        >
+                            <span aria-hidden>🏠</span>
+                            {name}
+                        </Link>
+                    ))}
                 </div>
             </div>
             )}

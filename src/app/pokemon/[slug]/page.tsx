@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {POKEMON, getPokemonBySlug} from '@/data/pokemon';
-import {dex, specialtyIcon, spritePath, typeColor} from '@/utils/format';
+import {dex, specialtyIcon, pokemonSprite, typeColor} from '@/utils/format';
 import {Card, Chips, Section, Stat} from "@/components";
 
 const RARITY_COLOR: Record<string, string> = {
@@ -52,7 +52,7 @@ export default async function PokemonPage({
                 <div
                     className="shrink-0 w-40 h-40 sm:w-48 sm:h-48 rounded-3xl bg-gradient-to-br from-leaf-100 via-leaf-50 to-sun-400/20 ring-2 ring-leaf-200 flex items-center justify-center p-4">
                     <Image
-                        src={spritePath(p.dexNumber)}
+                        src={pokemonSprite(p)}
                         alt={p.name}
                         width={192}
                         height={192}
@@ -169,12 +169,9 @@ export default async function PokemonPage({
                                             <ul className="flex flex-wrap gap-1.5">
                                                 {h.locations.map((loc) => (
                                                     <li key={loc}>
-                                                        <Link
-                                                            href={`/locations/${encodeURIComponent(loc)}`}
-                                                            className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200 hover:bg-leaf-100 hover:text-leaf-700 transition"
-                                                        >
+                                                        <span className="text-sm px-3 py-1 rounded-full bg-sand-100 text-sand-700 ring-1 ring-sand-200">
                                                             📍 {loc}
-                                                        </Link>
+                                                        </span>
                                                     </li>
                                                 ))}
                                             </ul>
