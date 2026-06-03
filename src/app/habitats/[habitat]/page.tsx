@@ -49,13 +49,13 @@ export default async function HabitatPage({
       </Link>
 
       <header className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-6">
-        <div className="shrink-0 w-full sm:w-64 h-40 rounded-3xl bg-gradient-to-br from-leaf-100 via-leaf-50 to-sun-400/20 ring-2 ring-leaf-200 flex items-center justify-center p-4">
+        <div className="shrink-0 w-fit overflow-hidden rounded-3xl bg-gradient-to-br from-leaf-100 via-leaf-50 to-sun-400/20 ring-2 ring-leaf-200 flex items-center justify-center">
           <Image
             src={habitatImage(habitat.slug)}
             alt={habitat.name}
-            width={240}
-            height={150}
-            className="object-contain drop-shadow-md"
+            width={300}
+            height={209}
+            className="object-cover drop-shadow-md"
             priority
           />
         </div>

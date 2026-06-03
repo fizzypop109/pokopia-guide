@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import type { AggregatedHabitat, IdealHabitat } from '@/data/pokemon';
-import { habitatImage, idealHabitatIcon } from '@/utils/format';
+import { habitatImage, idealHabitatIcon, pokemonSprite } from '@/utils/format';
 import { Card } from '@/components/Card';
+
+const MAX_SPRITES = 6;
 
 export function habitatIdealTypes(habitat: AggregatedHabitat): IdealHabitat[] {
   return [...new Set(habitat.residents.map((r) => r.pokemon.idealHabitat))].sort();
@@ -11,7 +13,7 @@ export function HabitatCard({ habitat }: { habitat: AggregatedHabitat }) {
   const idealTypes = habitatIdealTypes(habitat);
   return (
     <Card href={`/habitats/${habitat.slug}`}>
-      <div className="w-full h-28 rounded-xl bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden">
+      <div className="w-fit mx-auto rounded-xl bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden">
         <Image
           src={habitatImage(habitat.slug)}
           alt={habitat.name}
@@ -38,9 +40,28 @@ export function HabitatCard({ habitat }: { habitat: AggregatedHabitat }) {
           ))}
         </div>
 
-        <span className="text-xs text-sand-500">
-          {habitat.residents.length} Pokémon nest here
-        </span>
+        <div className="flex items-center gap-1">
+          {habitat.residents.slice(0, MAX_SPRITES).map((r) => (
+            <span
+              key={r.pokemon.slug}
+              className="w-7 h-7 rounded-full bg-leaf-50 ring-1 ring-leaf-100 flex items-center justify-center overflow-hidden"
+              title={r.pokemon.name}
+            >
+              <Image
+                src={pokemonSprite(r.pokemon)}
+                alt={r.pokemon.name}
+                width={28}
+                height={28}
+                className="object-contain"
+              />
+            </span>
+          ))}
+          {habitat.residents.length > MAX_SPRITES && (
+            <span className="text-xs text-sand-500 font-medium">
+              +{habitat.residents.length - MAX_SPRITES}
+            </span>
+          )}
+        </div>
       </div>
     </Card>
   );

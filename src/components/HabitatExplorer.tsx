@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import type { AggregatedHabitat, IdealHabitat } from '@/data/pokemon';
 import { idealHabitatIcon } from '@/utils/format';
 import { HabitatCard, habitatIdealTypes } from './HabitatCard';
+import { SearchInput } from './SearchInput';
 
 interface Props {
   habitats: AggregatedHabitat[];
@@ -12,17 +13,26 @@ interface Props {
 
 export function HabitatExplorer({ habitats, idealHabitats }: Props) {
   const [active, setActive] = useState<IdealHabitat | null>(null);
+  const [query, setQuery] = useState('');
 
-  const filtered = useMemo(
-    () =>
-      active
-        ? habitats.filter((h) => habitatIdealTypes(h).includes(active))
-        : habitats,
-    [habitats, active],
-  );
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return habitats.filter((h) => {
+      if (active && !habitatIdealTypes(h).includes(active)) return false;
+      return !(q &&
+          !h.name.toLowerCase().includes(q) &&
+          !h.residents.some((r) => r.pokemon.name.toLowerCase().includes(q)));
+
+    });
+  }, [habitats, active, query]);
 
   return (
     <div className="flex flex-col gap-5">
+      <SearchInput
+        value={query}
+        onChange={setQuery}
+        placeholder="Search habitats or Pokémon…"
+      />
       <div className="flex flex-wrap items-center gap-2">
         <button
           onClick={() => setActive(null)}
@@ -63,7 +73,7 @@ export function HabitatExplorer({ habitats, idealHabitats }: Props) {
           No habitats with that ideal condition.
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((h) => (
             <HabitatCard key={h.slug} habitat={h} />
           ))}

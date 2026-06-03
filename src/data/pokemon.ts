@@ -135,9 +135,28 @@ export interface Pokemon {
   spriteUrl?: string;
 }
 
-export const POKEMON: Pokemon[] = [
+/**
+ * Derive a URL slug from a display name. Lowercases, drops apostrophes
+ * (Farfetch'd → farfetchd) and collapses any other non-alphanumeric runs to
+ * single hyphens (`Mr. Mime` → mr-mime, `Tatsugiri (Curly Form)` →
+ * tatsugiri-curly-form).
+ */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Source shape for {@link POKEMON} entries. The `slug` is not stored in the
+ * data — it is derived from `name` via {@link slugify}.
+ */
+type PokemonInput = Omit<Pokemon, 'slug'>;
+
+const POKEMON_DATA: PokemonInput[] = [
   {
-    slug: 'bulbasaur',
     dexNumber: 1,
     name: 'Bulbasaur',
     classification: 'Seed Pokémon',
@@ -172,7 +191,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ivysaur',
     dexNumber: 2,
     name: 'Ivysaur',
     classification: 'Seed Pokémon',
@@ -207,7 +225,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'venusaur',
     dexNumber: 3,
     name: 'Venusaur',
     classification: 'Seed Pokémon',
@@ -242,7 +259,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'charmander',
     dexNumber: 4,
     name: 'Charmander',
     classification: 'Lizard Pokémon',
@@ -272,7 +288,6 @@ export const POKEMON: Pokemon[] = [
         'If Charmander is healthy, the flame on the tip of its tail will burn vigorously and won\'t go out even if it gets a bit wet.',
   },
   {
-    slug: 'charmeleon',
     dexNumber: 5,
     name: 'Charmeleon',
     classification: 'Flame Pokémon',
@@ -300,7 +315,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'charizard',
     dexNumber: 6,
     name: 'Charizard',
     classification: 'Flame Pokémon',
@@ -335,7 +349,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'squirtle',
     dexNumber: 7,
     name: 'Squirtle',
     classification: 'Tiny Turtle Pokémon',
@@ -370,7 +383,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'wartortle',
     dexNumber: 8,
     name: 'Wartortle',
     classification: 'Turtle Pokémon',
@@ -398,7 +410,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'blastoise',
     dexNumber: 9,
     name: 'Blastoise',
     classification: 'Shellfish Pokémon',
@@ -433,7 +444,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pidgey',
     dexNumber: 10,
     name: 'Pidgey',
     classification: 'Tiny Bird Pokémon',
@@ -469,7 +479,6 @@ export const POKEMON: Pokemon[] = [
     description: "Very docile. If attacked, it will often kick up sand to protect itself rather than fight back."
   },
   {
-    slug: 'pidgeotto',
     dexNumber: 11,
     name: 'Pidgeotto',
     classification: 'Bird Pokémon',
@@ -504,7 +513,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pidgeot',
     dexNumber: 12,
     name: 'Pidgeot',
     classification: 'Bird Pokémon',
@@ -532,7 +540,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'oddish',
     dexNumber: 13,
     name: 'Oddish',
     classification: 'Weed Pokémon',
@@ -560,7 +567,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gloom',
     dexNumber: 14,
     name: 'Gloom',
     classification: 'Weed Pokémon',
@@ -588,7 +594,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'vileplume',
     dexNumber: 15,
     name: 'Vileplume',
     classification: 'Flower Pokémon',
@@ -616,7 +621,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'bellossom',
     dexNumber: 16,
     name: 'Bellossom',
     classification: 'Flower Pokémon',
@@ -644,7 +648,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'paras',
     dexNumber: 17,
     name: 'Paras',
     classification: 'Mushroom Pokémon',
@@ -679,7 +682,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'parasect',
     dexNumber: 18,
     name: 'Parasect',
     classification: 'Mushroom Pokémon',
@@ -714,7 +716,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'venonat',
     dexNumber: 19,
     name: 'Venonat',
     classification: 'Insect Pokémon',
@@ -749,7 +750,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'venomoth',
     dexNumber: 20,
     name: 'Venomoth',
     classification: 'Poison Moth Pokémon',
@@ -784,7 +784,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'bellsprout',
     dexNumber: 21,
     name: 'Bellsprout',
     classification: 'Flower Pokémon',
@@ -812,7 +811,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'weepinbell',
     dexNumber: 22,
     name: 'Weepinbell',
     classification: 'Flycatcher Pokémon',
@@ -847,7 +845,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'victreebel',
     dexNumber: 23,
     name: 'Victreebel',
     classification: 'Flycatcher Pokémon',
@@ -882,7 +879,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'slowpoke',
     dexNumber: 24,
     name: 'Slowpoke',
     classification: 'Dopey Pokémon',
@@ -910,7 +906,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'slowbro',
     dexNumber: 25,
     name: 'Slowbro',
     classification: 'Hermit Crab Pokémon',
@@ -945,7 +940,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'slowking',
     dexNumber: 26,
     name: 'Slowking',
     classification: 'Royal Pokémon',
@@ -987,7 +981,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magnemite',
     dexNumber: 27,
     name: 'Magnemite',
     classification: 'Magnet Pokémon',
@@ -1015,7 +1008,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magneton',
     dexNumber: 28,
     name: 'Magneton',
     classification: 'Magnet Pokémon',
@@ -1050,7 +1042,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magnezone',
     dexNumber: 29,
     name: 'Magnezone',
     classification: 'Magnet Area Pokémon',
@@ -1085,7 +1076,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'onix',
     dexNumber: 30,
     name: 'Onix',
     classification: 'Rock Snake Pokémon',
@@ -1113,7 +1103,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'steelix',
     dexNumber: 31,
     name: 'Steelix',
     classification: 'Iron Snake Pokémon',
@@ -1141,7 +1130,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cubone',
     dexNumber: 32,
     name: 'Cubone',
     classification: 'Lonely Pokémon',
@@ -1169,7 +1157,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'marowak',
     dexNumber: 33,
     name: 'Marowak',
     classification: 'Bone Keeper Pokémon',
@@ -1197,7 +1184,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tyrogue',
     dexNumber: 34,
     name: 'Tyrogue',
     classification: 'Scuffle Pokémon',
@@ -1225,7 +1211,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'hitmonlee',
     dexNumber: 35,
     name: 'Hitmonlee',
     classification: 'Kicking Pokémon',
@@ -1253,7 +1238,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'hitmonchan',
     dexNumber: 36,
     name: 'Hitmonchan',
     classification: 'Punching Pokémon',
@@ -1283,7 +1267,6 @@ export const POKEMON: Pokemon[] = [
       'It corners its foes with combo punches from both sides, then finishes them off with a single straight punch launched at over 300 mph.',
   },
   {
-    slug: 'hitmontop',
     dexNumber: 37,
     name: 'Hitmontop',
     classification: 'Handstand Pokémon',
@@ -1311,7 +1294,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'koffing',
     dexNumber: 38,
     name: 'Koffing',
     classification: 'Poison Gas Pokémon',
@@ -1339,7 +1321,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'weezing',
     dexNumber: 39,
     name: 'Weezing',
     classification: 'Poison Gas Pokémon',
@@ -1374,7 +1355,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tangela',
     dexNumber: 40,
     name: 'Tangela',
     classification: 'Vine Pokémon',
@@ -1402,7 +1382,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tangrowth',
     dexNumber: 41,
     name: 'Tangrowth',
     classification: 'Vine Pokémon',
@@ -1432,7 +1411,6 @@ export const POKEMON: Pokemon[] = [
   {
     // Variant of #41 Tangrowth. Data copied from base — VERIFY against serebii;
     // may differ if this is a special form rather than a cosmetic recolor.
-    slug: 'tangrowth-professor',
     dexNumber: 41,
     name: 'Tangrowth (Professor)',
     classification: 'Vine Pokémon',
@@ -1461,7 +1439,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'scyther',
     dexNumber: 42,
     name: 'Scyther',
     classification: 'Mantis Pokémon',
@@ -1491,7 +1468,6 @@ export const POKEMON: Pokemon[] = [
       'The sharp scythes on its forearms become increasingly sharp by cutting through hard objects.',
   },
   {
-    slug: 'scizor',
     dexNumber: 43,
     name: 'Scizor',
     classification: 'Pincer Pokémon',
@@ -1519,7 +1495,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pinsir',
     dexNumber: 44,
     name: 'Pinsir',
     classification: 'Stagbeetle Pokémon',
@@ -1547,7 +1522,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magikarp',
     dexNumber: 45,
     name: 'Magikarp',
     classification: 'Fish Pokémon',
@@ -1575,7 +1549,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gyarados',
     dexNumber: 46,
     name: 'Gyarados',
     classification: 'Atrocious Pokémon',
@@ -1603,7 +1576,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ditto',
     dexNumber: 47,
     name: 'Ditto',
     classification: 'Transform Pokémon',
@@ -1616,7 +1588,6 @@ export const POKEMON: Pokemon[] = [
     favorites: [],
   },
   {
-    slug: 'hoothoot',
     dexNumber: 48,
     name: 'Hoothoot',
     classification: 'Owl Pokémon',
@@ -1658,7 +1629,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'noctowl',
     dexNumber: 49,
     name: 'Noctowl',
     classification: 'Owl Pokémon',
@@ -1693,7 +1663,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'heracross',
     dexNumber: 50,
     name: 'Heracross',
     classification: 'Singlehorn Pokémon',
@@ -1721,7 +1690,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'volbeat',
     dexNumber: 51,
     name: 'Volbeat',
     classification: 'Firefly Pokémon',
@@ -1749,7 +1717,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'illumise',
     dexNumber: 52,
     name: 'Illumise',
     classification: 'Firefly Pokémon',
@@ -1777,7 +1744,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gulpin',
     dexNumber: 53,
     name: 'Gulpin',
     classification: 'Stomach Pokémon',
@@ -1805,7 +1771,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'swalot',
     dexNumber: 54,
     name: 'Swalot',
     classification: 'Poison Bag Pokémon',
@@ -1833,7 +1798,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cacnea',
     dexNumber: 55,
     name: 'Cacnea',
     classification: 'Cactus Pokémon',
@@ -1861,7 +1825,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cacturne',
     dexNumber: 56,
     name: 'Cacturne',
     classification: 'Scarecrow Pokémon',
@@ -1889,7 +1852,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'combee',
     dexNumber: 57,
     name: 'Combee',
     classification: 'Tiny Bee Pokémon',
@@ -1919,7 +1881,6 @@ export const POKEMON: Pokemon[] = [
       'The trio is together from birth. It constantly gathers nectar from flowers to please Vespiquen.',
   },
   {
-    slug: 'vespiquen',
     dexNumber: 58,
     name: 'Vespiquen',
     classification: 'Beehive Pokémon',
@@ -1947,7 +1908,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'shellos',
     dexNumber: 59,
     name: 'Shellos',
     classification: 'Sea Slug Pokémon',
@@ -1975,7 +1935,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'shellos-east-sea',
     dexNumber: 59,
     name: 'Shellos (East Sea)',
     classification: 'Sea Slug Pokémon',
@@ -2004,7 +1963,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gastrodon',
     dexNumber: 60,
     name: 'Gastrodon',
     classification: 'Sea Slug Pokémon',
@@ -2033,7 +1991,6 @@ export const POKEMON: Pokemon[] = [
   },
   {
     // East Sea variant of #60 Gastrodon — cosmetic recolor, same Pokopia data.
-    slug: 'gastrodon-east-sea',
     dexNumber: 60,
     name: 'Gastrodon (East Sea)',
     classification: 'Sea Slug Pokémon',
@@ -2062,7 +2019,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'drifloon',
     dexNumber: 61,
     name: 'Drifloon',
     classification: 'Balloon Pokémon',
@@ -2104,7 +2060,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'drifblim',
     dexNumber: 62,
     name: 'Drifblim',
     classification: 'Blimp Pokémon',
@@ -2132,7 +2087,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'drilbur',
     dexNumber: 63,
     name: 'Drilbur',
     classification: 'Mole Pokémon',
@@ -2160,7 +2114,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'excadrill',
     dexNumber: 64,
     name: 'Excadrill',
     classification: 'Subterrene Pokémon',
@@ -2188,7 +2141,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'timburr',
     dexNumber: 65,
     name: 'Timburr',
     classification: 'Muscular Pokémon',
@@ -2216,7 +2168,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gurdurr',
     dexNumber: 66,
     name: 'Gurdurr',
     classification: 'Muscular Pokémon',
@@ -2251,7 +2202,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'conkeldurr',
     dexNumber: 67,
     name: 'Conkeldurr',
     classification: 'Muscular Pokémon',
@@ -2279,7 +2229,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'litwick',
     dexNumber: 68,
     name: 'Litwick',
     classification: 'Candle Pokémon',
@@ -2314,7 +2263,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'lampent',
     dexNumber: 69,
     name: 'Lampent',
     classification: 'Lamp Pokémon',
@@ -2349,7 +2297,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'chandelure',
     dexNumber: 70,
     name: 'Chandelure',
     classification: 'Luring Pokémon',
@@ -2377,7 +2324,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'axew',
     dexNumber: 71,
     name: 'Axew',
     classification: 'Tusk Pokémon',
@@ -2412,7 +2358,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'fraxure',
     dexNumber: 72,
     name: 'Fraxure',
     classification: 'Axe Jaw Pokémon',
@@ -2447,7 +2392,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'haxorus',
     dexNumber: 73,
     name: 'Haxorus',
     classification: 'Axe Jaw Pokémon',
@@ -2482,7 +2426,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'goomy',
     dexNumber: 74,
     name: 'Goomy',
     classification: 'Soft Tissue Pokémon',
@@ -2517,7 +2460,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'sliggoo',
     dexNumber: 75,
     name: 'Sliggoo',
     classification: 'Soft Tissue Pokémon',
@@ -2545,7 +2487,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'goodra',
     dexNumber: 76,
     name: 'Goodra',
     classification: 'Dragon Pokémon',
@@ -2573,7 +2514,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cramorant',
     dexNumber: 77,
     name: 'Cramorant',
     classification: 'Gulp Pokémon',
@@ -2601,7 +2541,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pichu',
     dexNumber: 78,
     name: 'Pichu',
     classification: 'Tiny Mouse Pokémon',
@@ -2629,7 +2568,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pikachu',
     dexNumber: 79,
     name: 'Pikachu',
     classification: 'Mouse Pokémon',
@@ -2657,7 +2595,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pikachu-peakychu',
     dexNumber: 79,
     name: 'Peakychu',
     classification: 'Mouse Pokémon',
@@ -2686,7 +2623,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'raichu',
     dexNumber: 80,
     name: 'Raichu',
     classification: 'Mouse Pokémon',
@@ -2714,7 +2650,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'zubat',
     dexNumber: 81,
     name: 'Zubat',
     classification: 'Bat Pokémon',
@@ -2749,7 +2684,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'golbat',
     dexNumber: 82,
     name: 'Golbat',
     classification: 'Bat Pokémon',
@@ -2777,7 +2711,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'crobat',
     dexNumber: 83,
     name: 'Crobat',
     classification: 'Bat Pokémon',
@@ -2812,7 +2745,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'meowth',
     dexNumber: 84,
     name: 'Meowth',
     classification: 'Scratch Cat Pokémon',
@@ -2847,7 +2779,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'persian',
     dexNumber: 85,
     name: 'Persian',
     classification: 'Classy Cat Pokémon',
@@ -2875,7 +2806,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'psyduck',
     dexNumber: 86,
     name: 'Psyduck',
     classification: 'Duck Pokémon',
@@ -2903,7 +2833,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'golduck',
     dexNumber: 87,
     name: 'Golduck',
     classification: 'Duck Pokémon',
@@ -2931,7 +2860,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'growlithe',
     dexNumber: 88,
     name: 'Growlithe',
     classification: 'Puppy Pokémon',
@@ -2966,7 +2894,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'arcanine',
     dexNumber: 89,
     name: 'Arcanine',
     classification: 'Legendary Pokémon',
@@ -3001,7 +2928,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'farfetchd',
     dexNumber: 90,
     name: "Farfetch'd",
     classification: 'Wild Duck Pokémon',
@@ -3029,7 +2955,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'grimer',
     dexNumber: 91,
     name: 'Grimer',
     classification: 'Sludge Pokémon',
@@ -3057,7 +2982,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'muk',
     dexNumber: 92,
     name: 'Muk',
     classification: 'Sludge Pokémon',
@@ -3085,7 +3009,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gastly',
     dexNumber: 93,
     name: 'Gastly',
     classification: 'Gas Pokémon',
@@ -3113,7 +3036,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'haunter',
     dexNumber: 94,
     name: 'Haunter',
     classification: 'Gas Pokémon',
@@ -3148,7 +3070,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'gengar',
     dexNumber: 95,
     name: 'Gengar',
     classification: 'Shadow Pokémon',
@@ -3176,7 +3097,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'voltorb',
     dexNumber: 96,
     name: 'Voltorb',
     classification: 'Ball Pokémon',
@@ -3211,7 +3131,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'electrode',
     dexNumber: 97,
     name: 'Electrode',
     classification: 'Ball Pokémon',
@@ -3246,7 +3165,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'exeggcute',
     dexNumber: 98,
     name: 'Exeggcute',
     classification: 'Egg Pokémon',
@@ -3281,7 +3199,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'exeggutor',
     dexNumber: 99,
     name: 'Exeggutor',
     classification: 'Coconut Pokémon',
@@ -3316,7 +3233,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'happiny',
     dexNumber: 100,
     name: 'Happiny',
     classification: 'Playhouse Pokémon',
@@ -3351,7 +3267,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'chansey',
     dexNumber: 101,
     name: 'Chansey',
     classification: 'Egg Pokémon',
@@ -3379,7 +3294,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'blissey',
     dexNumber: 102,
     name: 'Blissey',
     classification: 'Happiness Pokémon',
@@ -3407,7 +3321,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'elekid',
     dexNumber: 103,
     name: 'Elekid',
     classification: 'Electric Pokémon',
@@ -3435,7 +3348,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'electabuzz',
     dexNumber: 104,
     name: 'Electabuzz',
     classification: 'Electric Pokémon',
@@ -3470,7 +3382,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'electivire',
     dexNumber: 105,
     name: 'Electivire',
     classification: 'Thunderbolt Pokémon',
@@ -3505,7 +3416,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'lapras',
     dexNumber: 106,
     name: 'Lapras',
     classification: 'Transport Pokémon',
@@ -3533,7 +3443,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'munchlax',
     dexNumber: 107,
     name: 'Munchlax',
     classification: 'Big Eater Pokémon',
@@ -3568,7 +3477,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'snorlax',
     dexNumber: 108,
     name: 'Snorlax',
     classification: 'Sleeping Pokémon',
@@ -3605,7 +3513,6 @@ export const POKEMON: Pokemon[] = [
   {
     // Mosslax variant of #108 Snorlax — verified own data (differs from base:
     // specialty Eat, habitat Bright, "Gourmet's altar" in all locations).
-    slug: 'snorlax-mosslax',
     dexNumber: 108,
     name: 'Snorlax (Mosslax)',
     classification: 'Sleeping Pokémon',
@@ -3634,7 +3541,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'spinarak',
     dexNumber: 109,
     name: 'Spinarak',
     classification: 'String Spit Pokémon',
@@ -3662,7 +3568,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ariados',
     dexNumber: 110,
     name: 'Ariados',
     classification: 'Long Leg Pokémon',
@@ -3690,7 +3595,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'mareep',
     dexNumber: 111,
     name: 'Mareep',
     classification: 'Wool Pokémon',
@@ -3725,7 +3629,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'flaaffy',
     dexNumber: 112,
     name: 'Flaaffy',
     classification: 'Wool Pokémon',
@@ -3760,7 +3663,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ampharos',
     dexNumber: 113,
     name: 'Ampharos',
     classification: 'Light Pokémon',
@@ -3788,7 +3690,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'azurill',
     dexNumber: 114,
     name: 'Azurill',
     classification: 'Polka Dot Pokémon',
@@ -3823,7 +3724,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'marill',
     dexNumber: 115,
     name: 'Marill',
     classification: 'Aquamouse Pokémon',
@@ -3858,7 +3758,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'azumarill',
     dexNumber: 116,
     name: 'Azumarill',
     classification: 'Aquarabbit Pokémon',
@@ -3886,7 +3785,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'paldean-wooper',
     dexNumber: 117,
     name: 'Paldean Wooper',
     classification: 'Water Fish Pokémon',
@@ -3914,7 +3812,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'clodsire',
     dexNumber: 118,
     name: 'Clodsire',
     classification: 'Spiny Fish Pokémon',
@@ -3949,7 +3846,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'smeargle',
     dexNumber: 119,
     name: 'Smeargle',
     classification: 'Painter Pokémon',
@@ -3977,7 +3873,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'torchic',
     dexNumber: 120,
     name: 'Torchic',
     classification: 'Chick Pokémon',
@@ -4012,7 +3907,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'combusken',
     dexNumber: 121,
     name: 'Combusken',
     classification: 'Young Fowl Pokémon',
@@ -4047,7 +3941,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'blaziken',
     dexNumber: 122,
     name: 'Blaziken',
     classification: 'Blaze Pokémon',
@@ -4082,7 +3975,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'wingull',
     dexNumber: 123,
     name: 'Wingull',
     classification: 'Seagull Pokémon',
@@ -4117,7 +4009,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pelipper',
     dexNumber: 124,
     name: 'Pelipper',
     classification: 'Water Bird Pokémon',
@@ -4152,7 +4043,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'makuhita',
     dexNumber: 125,
     name: 'Makuhita',
     classification: 'Guts Pokémon',
@@ -4187,7 +4077,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'hariyama',
     dexNumber: 126,
     name: 'Hariyama',
     classification: 'Arm Thrust Pokémon',
@@ -4222,7 +4111,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'absol',
     dexNumber: 127,
     name: 'Absol',
     classification: 'Disaster Pokémon',
@@ -4250,7 +4138,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'piplup',
     dexNumber: 128,
     name: 'Piplup',
     classification: 'Penguin Pokémon',
@@ -4278,7 +4165,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'prinplup',
     dexNumber: 129,
     name: 'Prinplup',
     classification: 'Penguin Pokémon',
@@ -4313,7 +4199,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'empoleon',
     dexNumber: 130,
     name: 'Empoleon',
     classification: 'Emperor Pokémon',
@@ -4348,7 +4233,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'audino',
     dexNumber: 131,
     name: 'Audino',
     classification: 'Hearing Pokémon',
@@ -4376,7 +4260,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'trubbish',
     dexNumber: 132,
     name: 'Trubbish',
     classification: 'Trash Bag Pokémon',
@@ -4404,7 +4287,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'garbodor',
     dexNumber: 133,
     name: 'Garbodor',
     classification: 'Trash Heap Pokémon',
@@ -4432,7 +4314,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'zorua',
     dexNumber: 134,
     name: 'Zorua',
     classification: 'Tricky Fox Pokémon',
@@ -4460,7 +4341,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'zoroark',
     dexNumber: 135,
     name: 'Zoroark',
     classification: 'Illusion Fox Pokémon',
@@ -4495,7 +4375,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'minccino',
     dexNumber: 136,
     name: 'Minccino',
     classification: 'Chinchilla Pokémon',
@@ -4530,7 +4409,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cinccino',
     dexNumber: 137,
     name: 'Cinccino',
     classification: 'Scarf Pokémon',
@@ -4558,7 +4436,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'grubbin',
     dexNumber: 138,
     name: 'Grubbin',
     classification: 'Larva Pokémon',
@@ -4593,7 +4470,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'charjabug',
     dexNumber: 139,
     name: 'Charjabug',
     classification: 'Battery Pokémon',
@@ -4621,7 +4497,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'vikavolt',
     dexNumber: 140,
     name: 'Vikavolt',
     classification: 'Stag Beetle Pokémon',
@@ -4649,7 +4524,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'mimikyu',
     dexNumber: 141,
     name: 'Mimikyu',
     classification: 'Disguise Pokémon',
@@ -4677,7 +4551,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pawmi',
     dexNumber: 142,
     name: 'Pawmi',
     classification: 'Mouse Pokémon',
@@ -4712,7 +4585,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pawmo',
     dexNumber: 143,
     name: 'Pawmo',
     classification: 'Mouse Pokémon',
@@ -4747,7 +4619,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pawmot',
     dexNumber: 144,
     name: 'Pawmot',
     classification: 'Hands-On Pokémon',
@@ -4775,7 +4646,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tatsugiri-curly-form',
     dexNumber: 145,
     name: 'Tatsugiri (Curly Form)',
     classification: 'Mimicry Pokémon',
@@ -4804,7 +4674,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tatsugiri-droopy-form',
     dexNumber: 145,
     name: 'Tatsugiri (Droopy Form)',
     classification: 'Mimicry Pokémon',
@@ -4833,7 +4702,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tatsugiri-stretchy-form',
     dexNumber: 145,
     name: 'Tatsugiri (Stretchy Form)',
     classification: 'Mimicry Pokémon',
@@ -4862,7 +4730,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ekans',
     dexNumber: 146,
     name: 'Ekans',
     classification: 'Snake Pokémon',
@@ -4890,7 +4757,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'arbok',
     dexNumber: 147,
     name: 'Arbok',
     classification: 'Cobra Pokémon',
@@ -4918,7 +4784,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cleffa',
     dexNumber: 148,
     name: 'Cleffa',
     classification: 'Star Shape Pokémon',
@@ -4946,7 +4811,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'clefairy',
     dexNumber: 149,
     name: 'Clefairy',
     classification: 'Fairy Pokémon',
@@ -4981,7 +4845,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'clefable',
     dexNumber: 150,
     name: 'Clefable',
     classification: 'Fairy Pokémon',
@@ -5016,7 +4879,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'igglybuff',
     dexNumber: 151,
     name: 'Igglybuff',
     classification: 'Balloon Pokémon',
@@ -5044,7 +4906,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'jigglypuff',
     dexNumber: 152,
     name: 'Jigglypuff',
     classification: 'Balloon Pokémon',
@@ -5079,7 +4940,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'wigglytuff',
     dexNumber: 153,
     name: 'Wigglytuff',
     classification: 'Balloon Pokémon',
@@ -5107,7 +4967,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'diglett',
     dexNumber: 154,
     name: 'Diglett',
     classification: 'Mole Pokémon',
@@ -5142,7 +5001,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'dugtrio',
     dexNumber: 155,
     name: 'Dugtrio',
     classification: 'Mole Pokémon',
@@ -5177,7 +5035,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'machop',
     dexNumber: 156,
     name: 'Machop',
     classification: 'Superpower Pokémon',
@@ -5205,7 +5062,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'machoke',
     dexNumber: 157,
     name: 'Machoke',
     classification: 'Superpower Pokémon',
@@ -5240,7 +5096,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'machamp',
     dexNumber: 158,
     name: 'Machamp',
     classification: 'Superpower Pokémon',
@@ -5275,7 +5130,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'geodude',
     dexNumber: 159,
     name: 'Geodude',
     classification: 'Rock Pokémon',
@@ -5303,7 +5157,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'graveler',
     dexNumber: 160,
     name: 'Graveler',
     classification: 'Rock Pokémon',
@@ -5331,7 +5184,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'golem',
     dexNumber: 161,
     name: 'Golem',
     classification: 'Megaton Pokémon',
@@ -5359,7 +5211,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magby',
     dexNumber: 162,
     name: 'Magby',
     classification: 'Live Coal Pokémon',
@@ -5387,7 +5238,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magmar',
     dexNumber: 163,
     name: 'Magmar',
     classification: 'Spitfire Pokémon',
@@ -5415,7 +5265,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'magmortar',
     dexNumber: 164,
     name: 'Magmortar',
     classification: 'Blast Pokémon',
@@ -5443,7 +5292,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'bonsly',
     dexNumber: 165,
     name: 'Bonsly',
     classification: 'Bonsai Pokémon',
@@ -5471,7 +5319,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'sudowoodo',
     dexNumber: 166,
     name: 'Sudowoodo',
     classification: 'Imitation Pokémon',
@@ -5506,7 +5353,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'murkrow',
     dexNumber: 167,
     name: 'Murkrow',
     classification: 'Darkness Pokémon',
@@ -5541,7 +5387,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'honchkrow',
     dexNumber: 168,
     name: 'Honchkrow',
     classification: 'Big Boss Pokémon',
@@ -5576,7 +5421,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'larvitar',
     dexNumber: 169,
     name: 'Larvitar',
     classification: 'Rock Skin Pokémon',
@@ -5604,7 +5448,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'pupitar',
     dexNumber: 170,
     name: 'Pupitar',
     classification: 'Hard Shell Pokémon',
@@ -5632,7 +5475,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'tyranitar',
     dexNumber: 171,
     name: 'Tyranitar',
     classification: 'Armor Pokémon',
@@ -5667,7 +5509,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'lotad',
     dexNumber: 172,
     name: 'Lotad',
     classification: 'Water Weed Pokémon',
@@ -5709,7 +5550,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'lombre',
     dexNumber: 173,
     name: 'Lombre',
     classification: 'Jolly Pokémon',
@@ -5744,7 +5584,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'ludicolo',
     dexNumber: 174,
     name: 'Ludicolo',
     classification: 'Carefree Pokémon',
@@ -5772,7 +5611,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'mawile',
     dexNumber: 175,
     name: 'Mawile',
     classification: 'Deceiver Pokémon',
@@ -5800,7 +5638,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'torkoal',
     dexNumber: 176,
     name: 'Torkoal',
     classification: 'Coal Pokémon',
@@ -5828,7 +5665,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'kricketot',
     dexNumber: 177,
     name: 'Kricketot',
     classification: 'Cricket Pokémon',
@@ -5863,7 +5699,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'kricketune',
     dexNumber: 178,
     name: 'Kricketune',
     classification: 'Cricket Pokémon',
@@ -5898,7 +5733,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'chatot',
     dexNumber: 179,
     name: 'Chatot',
     classification: 'Music Note Pokémon',
@@ -5933,7 +5767,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'riolu',
     dexNumber: 180,
     name: 'Riolu',
     classification: 'Emanation Pokémon',
@@ -5968,7 +5801,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'lucario',
     dexNumber: 181,
     name: 'Lucario',
     classification: 'Aura Pokémon',
@@ -5996,7 +5828,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'stereo-rotom',
     dexNumber: 182,
     name: 'Stereo Rotom',
     classification: 'Plasma Pokémon',
@@ -6024,7 +5855,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'larvesta',
     dexNumber: 183,
     name: 'Larvesta',
     classification: 'Torch Pokémon',
@@ -6052,7 +5882,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'volcarona',
     dexNumber: 184,
     name: 'Volcarona',
     classification: 'Sun Pokémon',
@@ -6087,7 +5916,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'rowlet',
     dexNumber: 185,
     name: 'Rowlet',
     classification: 'Grass Quill Pokémon',
@@ -6115,7 +5943,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'dartrix',
     dexNumber: 186,
     name: 'Dartrix',
     classification: 'Blade Quill Pokémon',
@@ -6143,7 +5970,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'decidueye',
     dexNumber: 187,
     name: 'Decidueye',
     classification: 'Arrow Quill Pokémon',
@@ -6178,7 +6004,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'scorbunny',
     dexNumber: 188,
     name: 'Scorbunny',
     classification: 'Rabbit Pokémon',
@@ -6206,7 +6031,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'raboot',
     dexNumber: 189,
     name: 'Raboot',
     classification: 'Rabbit Pokémon',
@@ -6241,7 +6065,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'cinderace',
     dexNumber: 190,
     name: 'Cinderace',
     classification: 'Striker Pokémon',
@@ -6276,7 +6099,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'skwovet',
     dexNumber: 191,
     name: 'Skwovet',
     classification: 'Cheeky Pokémon',
@@ -6304,7 +6126,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'greedent',
     dexNumber: 192,
     name: 'Greedent',
     classification: 'Greedy Pokémon',
@@ -6332,7 +6153,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'rolycoly',
     dexNumber: 193,
     name: 'Rolycoly',
     classification: 'Coal Pokémon',
@@ -6360,7 +6180,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'carkol',
     dexNumber: 194,
     name: 'Carkol',
     classification: 'Coal Pokémon',
@@ -6388,7 +6207,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'coalossal',
     dexNumber: 195,
     name: 'Coalossal',
     classification: 'Coal Pokémon',
@@ -6423,7 +6241,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'toxel',
     dexNumber: 196,
     name: 'Toxel',
     classification: 'Baby Pokémon',
@@ -6451,7 +6268,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'toxtricity-amped-form',
     dexNumber: 197,
     name: 'Toxtricity (Amped Form)',
     classification: 'Punk Pokémon',
@@ -6479,7 +6295,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'toxtricity-low-key-form',
     dexNumber: 197,
     name: 'Toxtricity (Low Key Form)',
     classification: 'Punk Pokémon',
@@ -6508,7 +6323,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'fidough',
     dexNumber: 198,
     name: 'Fidough',
     classification: 'Puppy Pokémon',
@@ -6543,7 +6357,6 @@ export const POKEMON: Pokemon[] = [
     ],
   },
   {
-    slug: 'dachsbun',
     dexNumber: 199,
     name: 'Dachsbun',
     classification: 'Dog Pokémon',
@@ -6577,7 +6390,714 @@ export const POKEMON: Pokemon[] = [
       'Sour flavors',
     ],
   },
+  {
+    dexNumber: 200,
+    name: 'Charcadet',
+    classification: 'Fire Child Pokémon',
+    types: ['Fire'],
+    height: '2\'00" (0.6m)',
+    weight: '23.1lbs (10.5kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: 'Piping-hot lava',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Stone stuff',
+      'Strange stuff',
+      'Exercise',
+      'Luxury',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 201,
+    name: 'Armarouge',
+    classification: 'Fire Warrior Pokémon',
+    types: ['Fire', 'Psychic'],
+    height: '4\'11" (1.5m)',
+    weight: '187.4lbs (85kg)',
+    specialties: ['Burn', 'Trade'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: "Auspicious knight's shrine",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Stone stuff',
+      'Strange stuff',
+      'Exercise',
+      'Luxury',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 202,
+    name: 'Ceruledge',
+    classification: 'Fire Blades Pokémon',
+    types: ['Fire', 'Ghost'],
+    height: '5\'03" (1.6m)',
+    weight: '136.7lbs (62kg)',
+    specialties: ['Burn', 'Trade'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: "Malicious knight's shrine",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Stone stuff',
+      'Spooky stuff',
+      'Strange stuff',
+      'Luxury',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 203,
+    name: 'Glimmet',
+    classification: 'Ore Pokémon',
+    types: ['Rock', 'Poison'],
+    height: '2\'04" (0.7m)',
+    weight: '17.6lbs (8kg)',
+    specialties: ['Litter'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Creepy white rocks",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Container snacking",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Garbage',
+      'Shiny stuff',
+      'Complicated stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 204,
+    name: 'Glimmora',
+    classification: 'Ore Pokémon',
+    types: ['Rock', 'Poison'],
+    height: '4\'11" (1.5m)',
+    weight: '99.2lbs (45kg)',
+    specialties: ['Litter'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Creepy white rocks",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Container snacking",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Garbage',
+      'Shiny stuff',
+      'Complicated stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 205,
+    name: 'Gimmighoul',
+    classification: 'Coin Chest Pokémon',
+    types: ['Ghost'],
+    height: '1\'00" (0.3m)',
+    weight: '11.0lbs (5kg)',
+    specialties: ['Collect'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Mini museum",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Spooky stuff',
+      'Metal stuff',
+      'Strange stuff',
+      'Shiny stuff',
+      'Complicated stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 206,
+    name: 'Gholdengo',
+    classification: 'Coin Entity Pokémon',
+    types: ['Steel', 'Ghost'],
+    height: '3\'11" (1.2m)',
+    weight: '66.1lbs (30kg)',
+    specialties: ['Collect'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Absolute luxury",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Spooky stuff',
+      'Metal stuff',
+      'Strange stuff',
+      'Shiny stuff',
+      'Complicated stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 207,
+    name: 'Vulpix',
+    classification: 'Fox Pokémon',
+    types: ['Fire'],
+    height: '2\'00" (0.6m)',
+    weight: '21.8lbs (9.9kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: "Fluffy flower bed",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Soft stuff',
+      'Cute stuff',
+      'Round stuff',
+      'Pretty flowers',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 208,
+    name: 'Ninetales',
+    classification: 'Fox Pokémon',
+    types: ['Fire'],
+    height: '3\'07" (1.1m)',
+    weight: '43.9lbs (19.9kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: "Fluffy flower bed",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Nine flames",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Soft stuff',
+      'Watching stuff',
+      'Luxury',
+      'Pretty flowers',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 209,
+    name: 'Poliwag',
+    classification: 'Tadpole Pokémon',
+    types: ['Water'],
+    height: '2\'00" (0.6m)',
+    weight: '27.3lbs (12.4kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Squeaky clean",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Round stuff',
+      'Rides',
+      'Spinning stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 210,
+    name: 'Poliwhirl',
+    classification: 'Tadpole Pokémon',
+    types: ['Water'],
+    height: '3\'03" (1m)',
+    weight: '44.1lbs (20kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Hydrated fluffy flower bed",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Lots of nature',
+      'Exercise',
+      'Spinning stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 211,
+    name: 'Poliwrath',
+    classification: 'Tadpole Pokémon',
+    types: ['Water', 'Fighting'],
+    height: '4\'03" (1.3m)',
+    weight: '119.0lbs (54kg)',
+    specialties: ['Water', 'Build'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Sewer hole inspection",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Dojo training",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Construction',
+      'Exercise',
+      'Group Activities',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 212,
+    name: 'Politoed',
+    classification: 'Frog Pokémon',
+    types: ['Water'],
+    height: '3\'07" (1.1m)',
+    weight: '74.7lbs (33.9kg)',
+    specialties: ['Water', 'Hype'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Hydrated graceful flower bed",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Flower garden stump stage",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Harmonious hot spring",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Play spaces',
+      'Noisy stuff',
+      'Gatherings',
+      'Group Activities',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 213,
+    name: 'Abra',
+    classification: 'Psi Pokémon',
+    types: ['Psychic'],
+    height: '2\'11" (0.9m)',
+    weight: '43.0lbs (19.5kg)',
+    specialties: ['Teleport'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Surging psychic power",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Fortune-teller's table",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Wobbly stuff',
+      'Metal stuff',
+      'Soft stuff',
+      'Watching stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 214,
+    name: 'Kadabra',
+    classification: 'Psi Pokémon',
+    types: ['Psychic'],
+    height: '4\'03" (1.3m)',
+    weight: '124.6lbs (56.5kg)',
+    specialties: ['Teleport'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Fortune-teller's table",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Wobbly stuff',
+      'Metal stuff',
+      'Containers',
+      'Watching stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 215,
+    name: 'Alakazam',
+    classification: 'Psi Pokémon',
+    types: ['Psychic'],
+    height: '4\'11" (1.5m)',
+    weight: '105.8lbs (48.0kg)',
+    specialties: ['Teleport', 'Trade'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: "Surging psychic power",
+        locations: ['Sparkling Skylands', 'Cloud Island'],
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Experiment Space",
+        locations: ['Sparkling Skylands', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Wobbly stuff',
+      'Metal stuff',
+      'Letters and words',
+      'Watching stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 216,
+    name: 'Mime Jr.',
+    classification: 'Mime Pokémon',
+    types: ['Psychic', 'Fairy'],
+    height: '2\'00" (0.6m)',
+    weight: '28.7lbs (13.0kg)',
+    specialties: ['Gather'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Spotless Washing station",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Public reading material",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Cute stuff',
+      'Rides',
+      'Play spaces',
+      'Colorful stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 217,
+    name: 'Mr. Mime',
+    classification: 'Barrier Pokémon',
+    types: ['Psychic', 'Fairy'],
+    height: '4\'03" (1.3m)',
+    weight: '120.2lbs (54.5kg)',
+    specialties: ['Gather', 'Build'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Spotless Washing station",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Cute stuff',
+      'Rides',
+      'Wobbly stuff',
+      'Watching stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 218,
+    name: 'Porygon',
+    classification: 'Virtual Pokémon',
+    types: ['Normal'],
+    height: '2\'07" (0.8m)',
+    weight: '80.5lbs (36.5kg)',
+    specialties: ['Recycle'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Researcher's desk",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Soft stuff',
+      'Strange stuff',
+      'Blocky stuff',
+      'Construction',
+      'Colorful stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 219,
+    name: 'Porygon2',
+    classification: 'Virtual Pokémon',
+    types: ['Normal'],
+    height: '2\'00" (0.6m)',
+    weight: '71.6lbs (32.5kg)',
+    specialties: ['Recycle'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Work desk",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Soft stuff',
+      'Strange stuff',
+      'Round stuff',
+      'Construction',
+      'Colorful stuff',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 220,
+    name: 'Porygon-Z',
+    classification: 'Virtual Pokémon',
+    types: ['Normal'],
+    height: '2\'11" (0.9m)',
+    weight: '75.0lbs (34kg)',
+    specialties: ['Rarify'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: "Game Corner battle zone",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Soft stuff',
+      'Strange stuff',
+      'Fabric',
+      'Watching stuff',
+      'Colorful stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 221,
+    name: 'Dratini',
+    classification: 'Dragon Pokémon',
+    types: ['Dragon'],
+    height: '5\'11" (1.8m)',
+    weight: '7.3lbs (3.3kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Hydrated fluffy flower bed",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Simple bathroom",
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Lots of fire',
+      'Cleanliness',
+      'Cute stuff',
+      'Slender objects',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 222,
+    name: 'Dragonair',
+    classification: 'Dragon Pokémon',
+    types: ['Dragon'],
+    height: '13\'01" (4m)',
+    weight: '36.4lbs (16.5kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: "Hydrated fluffy flower bed",
+        locations: 'any',
+        rarity: 'Very Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+      {
+        name: "Simple bathroom",
+        locations: 'any',
+        rarity: 'Rare',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Lots of fire',
+      'Cleanliness',
+      'Glass stuff',
+      'Slender objects',
+      'Sweet flavors',
+    ],
+  },
 ];
+
+/**
+ * Public roster. Each entry's `slug` is filled from `name` via {@link slugify}
+ * unless the source data supplies an explicit override.
+ */
+export const POKEMON: Pokemon[] = POKEMON_DATA.map((p) => ({
+  ...p,
+  slug: slugify(p.name),
+}));
 
 export function getPokemonBySlug(slug: string): Pokemon | undefined {
   return POKEMON.find((p) => p.slug === slug);

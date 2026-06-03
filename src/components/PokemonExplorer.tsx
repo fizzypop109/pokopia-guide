@@ -10,6 +10,7 @@ import {
   type Specialty,
 } from '@/data/pokemon';
 import { PokemonCard } from './PokemonCard';
+import { SearchInput } from './SearchInput';
 
 interface Props {
   pokemon: Pokemon[];
@@ -67,13 +68,7 @@ export function PokemonExplorer({
 
   return (
     <div className="flex flex-col gap-4">
-      <input
-        type="search"
-        placeholder="Search by name…"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="rounded-full border-2 border-sand-200 bg-white px-5 py-2.5 text-sm shadow-sm focus:outline-none focus:border-leaf-400 focus:ring-2 focus:ring-leaf-300"
-      />
+      <SearchInput value={query} onChange={setQuery} />
       <button
         type="button"
         onClick={() => setFiltersOpen((o) => !o)}
