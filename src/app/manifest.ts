@@ -4,7 +4,7 @@ import { site } from '@/config/site';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: site.name,
-    short_name: 'Pokopia',
+    short_name: 'Pokopia Guide',
     description: site.tagline,
     start_url: '/',
     display: 'standalone',
