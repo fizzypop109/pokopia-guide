@@ -23,7 +23,7 @@ export function HabitatCard({ habitat }: { habitat: AggregatedHabitat }) {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <h3 className="font-display text-base font-bold text-sand-800 group-hover:text-leaf-600 transition">
           {habitat.name}
         </h3>
@@ -39,6 +39,35 @@ export function HabitatCard({ habitat }: { habitat: AggregatedHabitat }) {
             </span>
           ))}
         </div>
+
+        {habitat.requirements && habitat.requirements.length > 0 && (
+          <div className="flex flex-col gap-1">
+            <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-sand-400">
+              <span aria-hidden>🔨</span>
+              Requires
+            </span>
+            <ul className="flex flex-wrap gap-1">
+              {habitat.requirements.map((req) => {
+                const m = req.match(/^(\d+)\s+(.*)$/);
+                return (
+                  <li
+                    key={req}
+                    className="text-xs px-2 py-0.5 rounded-md bg-sand-100 text-sand-600 ring-1 ring-sand-200"
+                  >
+                    {m ? (
+                      <>
+                        <span className="font-semibold text-sand-800">{m[1]}×</span>{' '}
+                        {m[2]}
+                      </>
+                    ) : (
+                      req
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
 
         <div className="flex items-center gap-1">
           {habitat.residents.slice(0, MAX_SPRITES).map((r) => (

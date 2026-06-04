@@ -1,3 +1,5 @@
+import { HABITAT_REQUIREMENTS } from './habitatRequirements';
+
 export type PokemonType =
   | 'Normal'
   | 'Fire'
@@ -1376,7 +1378,7 @@ const POKEMON_DATA: PokemonInput[] = [
     idealHabitat: 'Bright',
     localHabitats: [
       {
-        name: "Nothin' but Poke Balls",
+        name: "Nothin' but Poké Balls",
         locations: ['Palette Town', 'Cloud Island'],
         rarity: 'Common',
         availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
@@ -9484,7 +9486,16 @@ export type AggregatedHabitat = {
   availableTimes: TimeOfDay[];
   availableWeather: Weather[];
   rarities: Rarity[];
+  /** Items/conditions needed to build this habitat (from Polygon's list). */
+  requirements?: string[];
   residents: HabitatResident[];
+};
+
+// Our habitat names occasionally differ from Polygon's (the requirements
+// source). Map our slug -> Polygon's slug where the habitat is the same.
+const HABITAT_SLUG_ALIASES: Record<string, string> = {
+  // Vaporeon's habitat: serebii "Boundless blue beverage" = Polygon "Boundless beverage".
+  'boundless-blue-beverage': 'boundless-beverage',
 };
 
 function aggregateHabitats(): Map<string, AggregatedHabitat> {
@@ -9531,6 +9542,8 @@ function aggregateHabitats(): Map<string, AggregatedHabitat> {
     entry.availableTimes = timeOrder.filter((t) => entry.availableTimes.includes(t));
     entry.availableWeather = weatherOrder.filter((w) => entry.availableWeather.includes(w));
     entry.rarities = rarityOrder.filter((r) => entry.rarities.includes(r));
+    entry.requirements =
+      HABITAT_REQUIREMENTS[entry.slug] ?? HABITAT_REQUIREMENTS[HABITAT_SLUG_ALIASES[entry.slug]];
     entry.residents.sort((a, b) => a.pokemon.dexNumber - b.pokemon.dexNumber);
   }
 

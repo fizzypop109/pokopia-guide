@@ -1,0 +1,1047 @@
+[
+  {
+    "name": "Tall grass",
+    "slug": "tall-grass",
+    "req": "4 tall grass"
+  },
+  {
+    "name": "Tree-shaded tall grass",
+    "slug": "tree-shaded-tall-grass",
+    "req": "1 large tree (any), 4 tall grass"
+  },
+  {
+    "name": "Boulder-shaded tall grass",
+    "slug": "boulder-shaded-tall-grass",
+    "req": "4 tall grass, 1 large boulder"
+  },
+  {
+    "name": "Hydrated tall grass",
+    "slug": "hydrated-tall-grass",
+    "req": "4 tall grass, 2 water"
+  },
+  {
+    "name": "Seaside tall grass",
+    "slug": "seaside-tall-grass",
+    "req": "4 tall grass, 2 ocean water"
+  },
+  {
+    "name": "Elevated tall grass",
+    "slug": "elevated-tall-grass",
+    "req": "4 tall grass, 1 high-up location"
+  },
+  {
+    "name": "Illuminated tall grass",
+    "slug": "illuminated-tall-grass",
+    "req": "4 tall grass (any), 1 lighting (any)"
+  },
+  {
+    "name": "Pretty flower bed",
+    "slug": "pretty-flower-bed",
+    "req": "4 wildflowers"
+  },
+  {
+    "name": "Tree-shaded flower bed",
+    "slug": "tree-shaded-flower-bed",
+    "req": "1 berry tree (any), 4 wildflowers"
+  },
+  {
+    "name": "Hydrated flower bed",
+    "slug": "hydrated-flower-bed",
+    "req": "4 wildflowers, 2 water"
+  },
+  {
+    "name": "Field of flowers",
+    "slug": "field-of-flowers",
+    "req": "8 wildflowers"
+  },
+  {
+    "name": "Elevated flower bed",
+    "slug": "elevated-flower-bed",
+    "req": "4 wildflowers, 1 high-up location"
+  },
+  {
+    "name": "Grave with flowers",
+    "slug": "grave-with-flowers",
+    "req": "4 wildflowers, 1 gravestone"
+  },
+  {
+    "name": "Flower garden",
+    "slug": "flower-garden",
+    "req": "4 hedges (any), 4 wildflowers"
+  },
+  {
+    "name": "Fresh veggie field",
+    "slug": "fresh-veggie-field",
+    "req": "8 vegetable field (any)"
+  },
+  {
+    "name": "Riding warm updrafts",
+    "slug": "riding-warm-updrafts",
+    "req": "3 lit campfires"
+  },
+  {
+    "name": "Campsite",
+    "slug": "campsite",
+    "req": "1 lit campfire, 1 straw table, 1 straw stool"
+  },
+  {
+    "name": "Training waterfall",
+    "slug": "training-waterfall",
+    "req": "1 seat (any), 2 water, 1 waterfall"
+  },
+  {
+    "name": "Tantalizing dining set",
+    "slug": "tantalizing-dining-set",
+    "req": "1 seat (any), 1 table (any), 1 plated food"
+  },
+  {
+    "name": "Picnic set",
+    "slug": "picnic-set",
+    "req": "1 seat (any), 1 table (any), 1 picnic basket"
+  },
+  {
+    "name": "Flowery table",
+    "slug": "flowery-table",
+    "req": "1 seat (any), 1 table (any), 1 small vase"
+  },
+  {
+    "name": "Bench with greenery",
+    "slug": "bench-with-greenery",
+    "req": "2 hedges (any), 1 seat (wide)"
+  },
+  {
+    "name": "Illuminated bench",
+    "slug": "illuminated-bench",
+    "req": "1 seat (wide), 1 powered streetlight (any)"
+  },
+  {
+    "name": "Exercise resting spot",
+    "slug": "exercise-resting-spot",
+    "req": "1 punching bag, 1 seat (any)"
+  },
+  {
+    "name": "Urgent care",
+    "slug": "urgent-care",
+    "req": "1 seat (any), 1 table (any), 1 first aid kit"
+  },
+  {
+    "name": "Gym first aid",
+    "slug": "gym-first-aid",
+    "req": "1 table (any), 1 punching bag, 1 first aid kit"
+  },
+  {
+    "name": "Road sign",
+    "slug": "road-sign",
+    "req": "1 arrow sign, 3 wooden path"
+  },
+  {
+    "name": "Large luggage carrier",
+    "slug": "large-luggage-carrier",
+    "req": "1 cart, 2 wooden crates"
+  },
+  {
+    "name": "Lumberjack's workplace",
+    "slug": "lumberjack's-workplace",
+    "req": "1 log chair, 1 cart, 1 tree stump (any), 1 log table"
+  },
+  {
+    "name": "Bed with a plush",
+    "slug": "bed-with-a-plush",
+    "req": "1 bed (any), 1 doll (any)"
+  },
+  {
+    "name": "Gently lit bed",
+    "slug": "gently-lit-bed",
+    "req": "1 bed (any), 1 table (any), 1 lit slender candle"
+  },
+  {
+    "name": "Grave offering",
+    "slug": "grave-offering",
+    "req": "1 gravestone, 1 plated food, 2 lit slender candles"
+  },
+  {
+    "name": "Creepy grave offering",
+    "slug": "creepy-grave-offering",
+    "req": "2 lit eerie candles, 1 gravestone, 1 plated food"
+  },
+  {
+    "name": "Chansey resting area",
+    "slug": "chansey-resting-area",
+    "req": "6 hedges (any), 1 Chansey plant, 1 seat (wide)"
+  },
+  {
+    "name": "Irresistible scent and glow",
+    "slug": "irresistible-scent-and-glow",
+    "req": "1 pitcher-plant pot, 1 plated foot, 1 mushroom lamp"
+  },
+  {
+    "name": "Floating in the shade",
+    "slug": "floating-in-the-shade",
+    "req": "1 inflatable boat, 1 beach parasol, 2 water"
+  },
+  {
+    "name": "Smooth tall grass",
+    "slug": "smooth-tall-grass",
+    "req": "1 dry tall grass, 1 smooth rock"
+  },
+  {
+    "name": "Factory storage",
+    "slug": "factory-storage",
+    "req": "1 powered streetlight (any), 1 control unit, 1 metal drum, 1 jumbled cords"
+  },
+  {
+    "name": "Luxury chirp-chirp meal",
+    "slug": "luxury-chirp-chirp-meal",
+    "req": "1 wooden birdhouse, 1 berry basket"
+  },
+  {
+    "name": "Berry-feast campsite",
+    "slug": "berry-feast-campsite",
+    "req": "1 Castform weather charm (sun), 1 lit bonfire, 1 berry basket, 1 high-up location"
+  },
+  {
+    "name": "Rain Dance site",
+    "slug": "rain-dance-site",
+    "req": "2 Castform weather charm (rain), 1 plated food"
+  },
+  {
+    "name": "Sunny Day site",
+    "slug": "sunny-day-site",
+    "req": "2 Castform weather charm (sun), 1 plated food"
+  },
+  {
+    "name": "Professor's treasure trove",
+    "slug": "professor's-treasure-trove",
+    "req": "1 Professor's treasure trove, 4 lost relics (large), 1 bed (any)"
+  },
+  {
+    "name": "Cozy log handicrafts",
+    "slug": "cozy-log-handicrafts",
+    "req": "1 log chair, 1 log bed, 1 log table"
+  },
+  {
+    "name": "Very-berry space",
+    "slug": "very-berry-space",
+    "req": "1 berry chair, 1 berry bed, 1 berry table, 1 powered berry table lamp"
+  },
+  {
+    "name": "Garden terrace",
+    "slug": "garden-terrace",
+    "req": "4 wildflowers, 1 garden chair, 1 lit garden light, 1 garden table"
+  },
+  {
+    "name": "Tree-shaded snoozing Snorlax",
+    "slug": "tree-shaded-snoozing-snorlax",
+    "req": "1 large tree (any), 1 naptime bed"
+  },
+  {
+    "name": "Good old-fashioned antiques",
+    "slug": "good-old-fashioned-antiques",
+    "req": "1 antique closet, 1 antique bed, 1 antique dresser, 1 antique chair"
+  },
+  {
+    "name": "Nothin' but Poké Balls",
+    "slug": "nothin'-but-poké-balls",
+    "req": "1 Poké Ball sofa, 1 Poké Ball bed, 1 Poké Ball table, 1 powered Poké Ball light"
+  },
+  {
+    "name": "Yellow tall grass",
+    "slug": "yellow-tall-grass",
+    "req": "4 yellow tall grass"
+  },
+  {
+    "name": "Tree-shaded yellow tall grass",
+    "slug": "tree-shaded-yellow-tall-grass",
+    "req": "1 large tree (any), 4 yellow tall grass"
+  },
+  {
+    "name": "Elevated yellow tall grass",
+    "slug": "elevated-yellow-tall-grass",
+    "req": "4 yellow tall grass, 1 high-up locations"
+  },
+  {
+    "name": "Hydrated yellow tall grass",
+    "slug": "hydrated-yellow-tall-grass",
+    "req": "4 yellow tall grass, 2 water"
+  },
+  {
+    "name": "Marshy tall grass",
+    "slug": "marshy-tall-grass",
+    "req": "4 yellow tall grass, 2 muddy water"
+  },
+  {
+    "name": "Overgrowth vending machine",
+    "slug": "overgrowth-vending-machine",
+    "req": "4 yellow tall grass, 1 powered vending machine"
+  },
+  {
+    "name": "Breezy flower bed",
+    "slug": "breezy-flower-bed",
+    "req": "4 seashore flowers"
+  },
+  {
+    "name": "Tropical vibes",
+    "slug": "tropical-vibes",
+    "req": "1 large palm tree, 4 seashore flowers"
+  },
+  {
+    "name": "Windy flower bed",
+    "slug": "windy-flower-bed",
+    "req": "1 windmill, 4 seashore flowers"
+  },
+  {
+    "name": "Shaded beach",
+    "slug": "shaded-beach",
+    "req": "1 large palm tree, 1 beach chair"
+  },
+  {
+    "name": "Tropical seaside",
+    "slug": "tropical-seaside",
+    "req": "1 large palm tree, 2 hedges (any), 2 ocean water"
+  },
+  {
+    "name": "Resting spot",
+    "slug": "resting-spot",
+    "req": "1 cardboard boxes, 1 straw bed"
+  },
+  {
+    "name": "Perpetual mess",
+    "slug": "perpetual-mess",
+    "req": "1 cardboard boxes, 2 toys (any)"
+  },
+  {
+    "name": "Trash collection site",
+    "slug": "trash-collection-site",
+    "req": "1 waste bin (any), 1 sign (any), 1 garbage bags"
+  },
+  {
+    "name": "Trash can central",
+    "slug": "trash-can-central",
+    "req": "4 garbage bins"
+  },
+  {
+    "name": "Trash disposal site",
+    "slug": "trash-disposal-site",
+    "req": "1 utility pole, 1 garbage bags"
+  },
+  {
+    "name": "Park bench",
+    "slug": "park-bench",
+    "req": "1 seat (wide), 1 garbage bin"
+  },
+  {
+    "name": "Tantalizing restaurant",
+    "slug": "tantalizing-restaurant",
+    "req": "1 seat (any), 1 menu board, 1 table (any), 1 plated food"
+  },
+  {
+    "name": "Tableside delivery cart",
+    "slug": "tableside-delivery-cart",
+    "req": "2 chic chairs, 1 chic table, 1 small vase, 1 push cart, 1 plated food"
+  },
+  {
+    "name": "Chirp-chirp meal",
+    "slug": "chirp-chirp-meal",
+    "req": "Wooden birdhouse, table (any), plated food"
+  },
+  {
+    "name": "Café space",
+    "slug": "café-space",
+    "req": "2 seats (any), 1 potted plant (any), 2 counters, 1 mug, 1 menu board"
+  },
+  {
+    "name": "Beach set",
+    "slug": "beach-set",
+    "req": "1 beach chair, 1 beach parasol, 1 side table"
+  },
+  {
+    "name": "Light-up stage",
+    "slug": "light-up-stage",
+    "req": "2 powered spotlights, 1 powered small stage"
+  },
+  {
+    "name": "Surprise in store",
+    "slug": "surprise-in-store",
+    "req": "2 balloons, 1 boo-in-the-box"
+  },
+  {
+    "name": "Night festival venue",
+    "slug": "night-festival-venue",
+    "req": "2 balloons, 1 powered Raichu sign"
+  },
+  {
+    "name": "Changing area",
+    "slug": "changing-area",
+    "req": "1 closet (any), 1 mirror (large)"
+  },
+  {
+    "name": "Private makeup stand",
+    "slug": "private-makeup-stand",
+    "req": "2 partitions (any), 1 closet (any), 1 dresser (any)"
+  },
+  {
+    "name": "Knitting station",
+    "slug": "knitting-station",
+    "req": "1 seat (any), 1 table (any), 1 knitting supplies"
+  },
+  {
+    "name": "Hot-spring shower",
+    "slug": "hot-spring-shower",
+    "req": "1 shower, 1 seat (any), 2 hot-spring water"
+  },
+  {
+    "name": "Resort meal prep",
+    "slug": "resort-meal-prep",
+    "req": "1 large palm tree, 1 seat (any), 1 plated food, 1 campfire"
+  },
+  {
+    "name": "All packed up",
+    "slug": "all-packed-up",
+    "req": "1 cart, 2 cardboard boxes"
+  },
+  {
+    "name": "Full recovery",
+    "slug": "full-recovery",
+    "req": "1 bed (any), 1 plain chest, 1 first aid kit"
+  },
+  {
+    "name": "Alarm clock sleep zone",
+    "slug": "alarm-clock-sleep-zone",
+    "req": "1 bed (any), 1 table (any), 1 alarm clock"
+  },
+  {
+    "name": "Vending machine break area",
+    "slug": "vending-machine-break-area",
+    "req": "1 powered vending machine, 1 seat (wide)"
+  },
+  {
+    "name": "Vending machine set",
+    "slug": "vending-machine-set",
+    "req": "1 waste bin (any), 1 powered vending machine"
+  },
+  {
+    "name": "Mini game corner",
+    "slug": "mini-game-corner",
+    "req": "1 powered arcade machine, 1 seat (any), 1 punching game"
+  },
+  {
+    "name": "Waterwheel spot",
+    "slug": "waterwheel-spot",
+    "req": "1 waterwheel, 2 water, 1 waterfall"
+  },
+  {
+    "name": "Furnace spot",
+    "slug": "furnace-spot",
+    "req": "1 metal drum, 1 furnace"
+  },
+  {
+    "name": "Dock",
+    "slug": "dock",
+    "req": "4 walkways, 1 powered streetlight, 2 ocean water"
+  },
+  {
+    "name": "Spooky study",
+    "slug": "spooky-study",
+    "req": "1 bookcase, 1 chic sofa, 1 plain table, 1 lit slender candle"
+  },
+  {
+    "name": "Playing pirate",
+    "slug": "playing-pirate",
+    "req": "2 barrels, 1 ship's wheel, 2 cannons"
+  },
+  {
+    "name": "Working the register",
+    "slug": "working-the-register",
+    "req": "2 table (any), 1 powered cash register"
+  },
+  {
+    "name": "Tiny atelier",
+    "slug": "tiny-atelier",
+    "req": "1 canvas, 1 seat (any)"
+  },
+  {
+    "name": "Gourmet's altar",
+    "slug": "gourmet's-altar",
+    "req": "1 offering dish"
+  },
+  {
+    "name": "Pikachu space",
+    "slug": "pikachu-space",
+    "req": "1 Pikachu sofa, 1 Pikachu doll"
+  },
+  {
+    "name": "Cuteness overload",
+    "slug": "cuteness-overload",
+    "req": "1 cute sofa, 1 cute table, 1 powered cute lamp, 1 cute bed, 1 cute dresser"
+  },
+  {
+    "name": "Welcoming resort",
+    "slug": "welcoming-resort",
+    "req": "1 resort sofa, 1 resort table, 1 resort hammock, 1 powered resort light"
+  },
+  {
+    "name": "Plain life",
+    "slug": "plain-life",
+    "req": "1 plain bed, 1 plain sofa, 1 plain table, 1 lit plain lamp"
+  },
+  {
+    "name": "Red tall grass",
+    "slug": "red-tall-grass",
+    "req": "4 red tall grass"
+  },
+  {
+    "name": "Tree-shaded red tall grass",
+    "slug": "tree-shaded-red-tall-grass",
+    "req": "1 large tree (any), 4 red tall grass"
+  },
+  {
+    "name": "Pointy tree-shaded rocky tall grass",
+    "slug": "pointy-tree-shaded-rocky-tall-grass",
+    "req": "1 pointy tree, 4 red tall grass, 1 large boulder"
+  },
+  {
+    "name": "Hydrated red tall grass",
+    "slug": "hydrated-red-tall-grass",
+    "req": "4 red tall grass, 2 water"
+  },
+  {
+    "name": "Elevated red tall grass",
+    "slug": "elevated-red-tall-grass",
+    "req": "4 red tall grass, 1 high-up location"
+  },
+  {
+    "name": "Grassy training field",
+    "slug": "grassy-training-field",
+    "req": "2 sandbags, 4 red tall grass"
+  },
+  {
+    "name": "Graceful flower bed",
+    "slug": "graceful-flower-bed",
+    "req": "4 mountain flowers"
+  },
+  {
+    "name": "Tree-shaded graceful flower bed",
+    "slug": "tree-shaded-graceful-flower-bed",
+    "req": "1 pointy tree, 4 mountain flowers"
+  },
+  {
+    "name": "Hydrated graceful flower bed",
+    "slug": "hydrated-graceful-flower-bed",
+    "req": "4 mountain flowers, 2 water"
+  },
+  {
+    "name": "Flower garden stump stage",
+    "slug": "flower-garden-stump-stage",
+    "req": "4 mountain flowers, 1 tree stump (any), 2 mushroom lamp"
+  },
+  {
+    "name": "Toil in the soil",
+    "slug": "toil-in-the-soil",
+    "req": "4 vegetable fields (any), 1 wheelbarrow"
+  },
+  {
+    "name": "Uplifting duckweed",
+    "slug": "uplifting-duckweed",
+    "req": "4 duckweed, 2 water"
+  },
+  {
+    "name": "Mossy rest spot",
+    "slug": "mossy-rest-spot",
+    "req": "4 moss"
+  },
+  {
+    "name": "Mossy boulder",
+    "slug": "mossy-boulder",
+    "req": "4 moss, 1 mossy boulder"
+  },
+  {
+    "name": "Mossy hot spring",
+    "slug": "mossy-hot-spring",
+    "req": "3 moss, 2 hot-spring water"
+  },
+  {
+    "name": "Open-air bath",
+    "slug": "open-air-bath",
+    "req": "1 hot-spring spout, 2 hot spring water"
+  },
+  {
+    "name": "Harmonious hot spring",
+    "slug": "harmonious-hot-spring",
+    "req": "1 hot-spring spout, 1 water basin, 2 hot-spring water"
+  },
+  {
+    "name": "Piping-hot lava",
+    "slug": "piping-hot-lava",
+    "req": "1 molten rock, 2 lava"
+  },
+  {
+    "name": "Digging and burning",
+    "slug": "digging-and-burning",
+    "req": "1 wheelbarrow, 1 smelting furnace, 1 excavation tools"
+  },
+  {
+    "name": "Clink-clang iron construction",
+    "slug": "clink-clang-iron-construction",
+    "req": "3 iron beams or columns, 1 wheelbarrow, 1 sandbag, 1 excavation tools"
+  },
+  {
+    "name": "Creepy white rocks",
+    "slug": "creepy-white-rocks",
+    "req": "1 stalagmites, 4 moss, 1 wooden crate, 1 lantern"
+  },
+  {
+    "name": "Container snacking",
+    "slug": "container-snacking",
+    "req": "1 barrel, 1 wooden crate, 1 lantern, 1 plated food"
+  },
+  {
+    "name": "Dinner table surprise",
+    "slug": "dinner-table-surprise",
+    "req": "2 seats (wide), 1 table (large), 4 party platters"
+  },
+  {
+    "name": "Best bread bakery",
+    "slug": "best-bread-bakery",
+    "req": "1 bread oven, 2 counters, 1 plated food"
+  },
+  {
+    "name": "Mini kitchen",
+    "slug": "mini-kitchen",
+    "req": "1 kitchen table, 1 cooking stove, 1 frying pan (any), 1 modern sink"
+  },
+  {
+    "name": "House party",
+    "slug": "house-party",
+    "req": "1 food counter, 1 paper party cups, 1 plated food"
+  },
+  {
+    "name": "Lazy photo-album scrolling",
+    "slug": "lazy-photo-album-scrolling",
+    "req": "1 paper party cups, 1 tablet"
+  },
+  {
+    "name": "Chirping recital",
+    "slug": "chirping-recital",
+    "req": "1 perch, 1 standing mic"
+  },
+  {
+    "name": "Recital stage",
+    "slug": "recital-stage",
+    "req": "2 speakers, 1 powered small stage, 1 standing mic"
+  },
+  {
+    "name": "Box to the rhythm",
+    "slug": "box-to-the-rhythm",
+    "req": "1 punching bag, 1 table (any), 1 CD player"
+  },
+  {
+    "name": "Music and magazines",
+    "slug": "music-and-magazines",
+    "req": "1 CD player, 1 CD rack, 1 magazine rack"
+  },
+  {
+    "name": "Mini museum",
+    "slug": "mini-museum",
+    "req": "3 posts (any), 1 pedestal/exhibition stand, 1 lost relic (large)"
+  },
+  {
+    "name": "Refreshing locker room",
+    "slug": "refreshing-locker-room",
+    "req": "2 office lockers, 1 potted plant (any), 1 seat (wide), 1 punching game"
+  },
+  {
+    "name": "Bronze landmark",
+    "slug": "bronze-landmark",
+    "req": "4 hedges (any), 1 moonlight dance statue, 1 sign"
+  },
+  {
+    "name": "Railroad crossing",
+    "slug": "railroad-crossing",
+    "req": "1 railway track, 1 crossing gate"
+  },
+  {
+    "name": "Chef's kitchen",
+    "slug": "chef's-kitchen",
+    "req": "1 cooking stove, 1 modern sink, 1 plain table, 1 stylish cooking pot, 1 cutting board, 1 plated food"
+  },
+  {
+    "name": "Absolute luxury",
+    "slug": "absolute-luxury",
+    "req": "1 lit luxury lamp, 1 luxury bed, 1 luxury sofa, 1 luxury table"
+  },
+  {
+    "name": "Heavy iron",
+    "slug": "heavy-iron",
+    "req": "1 iron bed, 1 iron table, 1 iron chair, 1 lit lantern"
+  },
+  {
+    "name": "Modern living",
+    "slug": "modern-living",
+    "req": "1 industrial bed, 1 industrial desk, 1 industrial chair"
+  },
+  {
+    "name": "Pink tall grass",
+    "slug": "pink-tall-grass",
+    "req": "4 pink tall grass"
+  },
+  {
+    "name": "Tree-shaded pink tall grass",
+    "slug": "tree-shaded-pink-tall-grass",
+    "req": "1 large tree (any), 4 pink tall grass"
+  },
+  {
+    "name": "Hydrated pink tall grass",
+    "slug": "hydrated-pink-tall-grass",
+    "req": "4 pink tall grass, 2 water"
+  },
+  {
+    "name": "Elevated pink tall grass",
+    "slug": "elevated-pink-tall-grass",
+    "req": "4 pink tall grass, 1 high-up location"
+  },
+  {
+    "name": "Concrete pipe secret base",
+    "slug": "concrete-pipe-secret-base",
+    "req": "3 concrete pipes, 4 tall grass (any)"
+  },
+  {
+    "name": "Fluffy flower bed",
+    "slug": "fluffy-flower-bed",
+    "req": "4 skyland flowers"
+  },
+  {
+    "name": "Tree-shaded fluffy flower bed",
+    "slug": "tree-shaded-fluffy-flower-bed",
+    "req": "1 large tree (any), 4 skyland flowers"
+  },
+  {
+    "name": "Hydrated fluffy flower bed",
+    "slug": "hydrated-fluffy-flower-bed",
+    "req": "4 skyland flowers, 2 water"
+  },
+  {
+    "name": "Waterside dinghy",
+    "slug": "waterside-dinghy",
+    "req": "1 canoe, 2 duckweed, 2 water, 1 high-up location"
+  },
+  {
+    "name": "Illuminated waterfall",
+    "slug": "illuminated-waterfall",
+    "req": "3 stepping stones, 2 lit torches, 3 water, 1 waterfall"
+  },
+  {
+    "name": "Birdsong garden",
+    "slug": "birdsong-garden",
+    "req": "1 stylish hedge, 1 wooden birdhouse"
+  },
+  {
+    "name": "Simple bathroom",
+    "slug": "simple-bathroom",
+    "req": "1 shower, 1 bathtub"
+  },
+  {
+    "name": "Cycling rest stop",
+    "slug": "cycling-rest-stop",
+    "req": "1 bike, 1 powered vending machine"
+  },
+  {
+    "name": "Fireplace nap spot",
+    "slug": "fireplace-nap-spot",
+    "req": "1 lit stone fireplace, 1 seat (wide)"
+  },
+  {
+    "name": "Surging psychic power",
+    "slug": "surging-psychic-power",
+    "req": "1 simple cushion, 1 crystal ball"
+  },
+  {
+    "name": "Fortune-teller's table",
+    "slug": "fortune-teller's-table",
+    "req": "2 seats (any), 1 table (any), 1 crystal ball"
+  },
+  {
+    "name": "Trash site TV",
+    "slug": "trash-site-tv",
+    "req": "2 garbage bags, 1 powered television"
+  },
+  {
+    "name": "Oversized dumping ground",
+    "slug": "oversized-dumping-ground",
+    "req": "3 iron beams or columns, 1 tires, 1 waste bin (any), 1 microwave oven"
+  },
+  {
+    "name": "Interrogation desk",
+    "slug": "interrogation-desk",
+    "req": "1 Arcanine doll, 2 folding chairs, 1 industrial desk, 1 lit desk light"
+  },
+  {
+    "name": "Sewer-hole inspection",
+    "slug": "sewer-hole-inspection",
+    "req": "1 iron pipes, 1 sewer-hole cover, 1 excavation tools, 1 traffic cone"
+  },
+  {
+    "name": "Spotless washing station",
+    "slug": "spotless-washing-station",
+    "req": "1 towel rack, 1 wall mirror, 1 sink"
+  },
+  {
+    "name": "Home theater",
+    "slug": "home-theater",
+    "req": "2 speakers, 1 stand (any), 1 powered television"
+  },
+  {
+    "name": "Study area",
+    "slug": "study-area",
+    "req": "1 bookcase, 1 seat (any), 1 table (any), 1 pencil holder"
+  },
+  {
+    "name": "Rhythmic living room",
+    "slug": "rhythmic-living-room",
+    "req": "2 speakers, 4 music mats (any), 1 powered television"
+  },
+  {
+    "name": "Squeaky clean",
+    "slug": "squeaky-clean",
+    "req": "1 bathtub, 1 cleaning supplies"
+  },
+  {
+    "name": "Moisturizing makeup stand",
+    "slug": "moisturizing-makeup-stand",
+    "req": "1 dresser (any), 1 seat (any), 1 humidifier"
+  },
+  {
+    "name": "Mini library",
+    "slug": "mini-library",
+    "req": "2 bookcases, 1 step stool, 1 table (any), 1 powered lighting (any)"
+  },
+  {
+    "name": "Game Corner battle zone",
+    "slug": "game-corner-battle-zone",
+    "req": "2 powered arcade machines, 2 seats (any)"
+  },
+  {
+    "name": "Playland",
+    "slug": "playland",
+    "req": "1 slide, 1 toy (any)"
+  },
+  {
+    "name": "Work desk",
+    "slug": "work-desk",
+    "req": "1 office desk, 1 laptop, 1 mug, 1 office chair"
+  },
+  {
+    "name": "Office storeroom",
+    "slug": "office-storeroom",
+    "req": "1 office shelf, 1 step stool, 1 cardboard boxes"
+  },
+  {
+    "name": "Experiment space",
+    "slug": "experiment-space",
+    "req": "1 science experiment, 1 microscope, 1 papers"
+  },
+  {
+    "name": "Professor's apprentice program",
+    "slug": "professor's-apprentice-program",
+    "req": "1 whiteboard, 1 table (any), 1 jumbled cords, 1 laptop"
+  },
+  {
+    "name": "Researcher's desk",
+    "slug": "researcher's-desk",
+    "req": "2 tables (any), 1 powered computer, 1 science experiment"
+  },
+  {
+    "name": "Public reading material",
+    "slug": "public-reading-material",
+    "req": "1 magazine rack, 1 newspaper"
+  },
+  {
+    "name": "Heart-pounding surprise box",
+    "slug": "heart-pounding-surprise-box",
+    "req": "2 lit spotlights, 1 big drum, 1 boo-in-the-box"
+  },
+  {
+    "name": "Prank button",
+    "slug": "prank-button",
+    "req": "1 floor switch, 1 boo-in-the-box"
+  },
+  {
+    "name": "Picturesque photo cutout board",
+    "slug": "picturesque-photo-cutout-board",
+    "req": "1 photo cutout board, 2 powered spotlights, 1 high-up location"
+  },
+  {
+    "name": "Tire park",
+    "slug": "tire-park",
+    "req": "1 slide, 1 tires, 2 tire toys"
+  },
+  {
+    "name": "Nature's market",
+    "slug": "nature's-market",
+    "req": "1 large tree (any), 1 large boulder, 2 tables (any), 1 powered cash register"
+  },
+  {
+    "name": "Construction-site generator",
+    "slug": "construction-site-generator",
+    "req": "1 furnace, 2 iron scaffold, 1 iron pipes"
+  },
+  {
+    "name": "Dojo training",
+    "slug": "dojo-training",
+    "req": "2 hanging scrolls, 2 strength rocks"
+  },
+  {
+    "name": "Evil organization HQ",
+    "slug": "evil-organization-hq",
+    "req": "2 potted plants (any), 1 Team Rocket wall hanging, 1 luxury sofa"
+  },
+  {
+    "name": "Nine flames",
+    "slug": "nine-flames",
+    "req": "9 lit firepits"
+  },
+  {
+    "name": "Plush central",
+    "slug": "plush-central",
+    "req": "1 Arcanine doll, 1 Pikachu doll, 1 Dragonite doll, 1 Eevee doll"
+  },
+  {
+    "name": "Gamer's paradise",
+    "slug": "gamer's-paradise",
+    "req": "1 gaming bed, 1 gaming PC, 1 gaming chair, 1 table (any), 1 gaming fridge"
+  },
+  {
+    "name": "Top pop",
+    "slug": "top-pop",
+    "req": "1 pop art bed, 1 pop art sofa, 1 pop art table"
+  },
+  {
+    "name": "Fishing pond",
+    "slug": "fishing-pond",
+    "req": "1 fishing rod, 1 seat (any), 1 water"
+  },
+  {
+    "name": "Ocean fishing spot",
+    "slug": "ocean-fishing-spot",
+    "req": "1 fishing rod, 1 seat (any), 1 ocean water"
+  },
+  {
+    "name": "Marsh fishing spot",
+    "slug": "marsh-fishing-spot",
+    "req": "1 fishing rod, 1 seat (any), 1 muddy water"
+  },
+  {
+    "name": "Hot-spring fishing spot",
+    "slug": "hot-spring-fishing-spot",
+    "req": "1 fishing rod, 1 seat (any), 1 hot-spring water"
+  },
+  {
+    "name": "Magma fishing spot",
+    "slug": "magma-fishing-spot",
+    "req": "1 fishing rod, 1 seat (any), 1 lava"
+  },
+  {
+    "name": "Amped rock stage",
+    "slug": "amped-rock-stage",
+    "req": "2 speakers, 1 powered small stage, 1 cool electric guitar, 1 standing mic"
+  },
+  {
+    "name": "Low-key rock stage",
+    "slug": "low-key-rock-stage",
+    "req": "2 speakers, 1 powered small stage, 1 cool bass guitar, 1 standing mic"
+  },
+  {
+    "name": "Malicious knight's shrine",
+    "slug": "malicious-knight's-shrine",
+    "req": "1 pedestal/exhibition stand, 1 Malicious Armor, 2 stepping stones, 2 lit firepits"
+  },
+  {
+    "name": "Auspicious knight's shrine",
+    "slug": "auspicious-knight's-shrine",
+    "req": "1 pedestal/exhibition stand, 1 Auspicious Armor, 2 stepping stones, 2 lit firepits"
+  },
+  {
+    "name": "Wing Fossil display",
+    "slug": "wing-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Wing Fossil (head), 1 Wing Fossil (right wing), 1 Wing Fossil (left wing), 1 Wing Fossil (body), 1 Wing Fossil (tail)"
+  },
+  {
+    "name": "Skull Fossil display",
+    "slug": "skull-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Skull Fossil"
+  },
+  {
+    "name": "Headbutt Fossil display",
+    "slug": "headbutt-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Headbutt Fossil (head), 1 Headbutt Fossil (body), 1 Headbutt Fossil (tail)"
+  },
+  {
+    "name": "Armor Fossil display",
+    "slug": "armor-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Armor Fossil"
+  },
+  {
+    "name": "Shield Fossil display",
+    "slug": "shield-fossil-display",
+    "req": "2 pedestal/exhibition stand, 1 Shield Fossil (head), 1 Shield Fossil (body), 1 Shield Fossil (tail)"
+  },
+  {
+    "name": "Jaw Fossil display",
+    "slug": "jaw-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Jaw Fossil"
+  },
+  {
+    "name": "Despot Fossil display",
+    "slug": "despot-fossil-display",
+    "req": "2 pedestal/exhibition stand, 1 Despot Fossil (head), 1 Despot Fossil (body), 1 Despot Fossil (legs), 1 Despot Fossil (tail)"
+  },
+  {
+    "name": "Sail Fossil display",
+    "slug": "sail-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Sail Fossil"
+  },
+  {
+    "name": "Tundra Fossil display",
+    "slug": "tundra-fossil-display",
+    "req": "1 pedestal/exhibition stand, 1 Tundra Fossil (head), 1 Tundra Fossil (body), 1 Tundra Fossil (trail"
+  },
+  {
+    "name": "Boundless beverage",
+    "slug": "boundless-beverage",
+    "req": "1 seat (any), 1 table (any), 1 soda float"
+  },
+  {
+    "name": "Electrifying potatoes",
+    "slug": "electrifying-potatoes",
+    "req": "1 seat (any), 1 table (any), 1 fried potatoes"
+  },
+  {
+    "name": "Burning-hot spice",
+    "slug": "burning-hot-spice",
+    "req": "1 seat (any), 1 table (any), 1 pizza"
+  },
+  {
+    "name": "Elegant daytime treats",
+    "slug": "elegant-daytime-treats",
+    "req": "1 seat (any), 1 table (any), 1 afternoon tea set"
+  },
+  {
+    "name": "Dark-chocolate cookies",
+    "slug": "dark-chocolate-cookies",
+    "req": "1 seat (any), 1 table (any), 1 chocolate cookies"
+  },
+  {
+    "name": "Leafy greens sandwich",
+    "slug": "leafy-greens-sandwich",
+    "req": "1 seat (any), 1 table (any), 1 sandwiches"
+  },
+  {
+    "name": "Chilly shaved ice",
+    "slug": "chilly-shaved-ice",
+    "req": "1 seat (any), 1 table (any), 1 shaved ice"
+  },
+  {
+    "name": "Lovely ribbon cake",
+    "slug": "lovely-ribbon-cake",
+    "req": "1 seat (any), 1 table (any), 1 ribbon cake"
+  }
+]

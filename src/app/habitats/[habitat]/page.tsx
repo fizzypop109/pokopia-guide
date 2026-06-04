@@ -104,6 +104,34 @@ export default async function HabitatPage({
         />
       </section>
 
+      {habitat.requirements && habitat.requirements.length > 0 && (
+        <Section title="Requirements" hint="What you need to build this habitat">
+          <ul className="flex flex-wrap gap-2">
+            {habitat.requirements.map((req) => {
+              const m = req.match(/^(\d+)\s+(.*)$/);
+              return (
+                <li
+                  key={req}
+                  className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-xl bg-sand-100 text-sand-700 ring-1 ring-sand-200"
+                >
+                  <span aria-hidden className="text-leaf-500">
+                    🔨
+                  </span>
+                  {m ? (
+                    <span>
+                      <span className="font-semibold text-sand-900">{m[1]}×</span>{' '}
+                      {m[2]}
+                    </span>
+                  ) : (
+                    req
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </Section>
+      )}
+
       <Section
         title="Build in"
         hint="Locations where you can build this habitat"
