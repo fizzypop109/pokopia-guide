@@ -132,6 +132,17 @@ export interface Pokemon {
   localHabitats: Habitat[];
   favorites: string[];
   description?: string;
+  /**
+   * Optional guidance on how to obtain this Pokémon (e.g. event, no habitat).
+   * `text` is an intro paragraph; `spots` are optional labeled locations, each
+   * rendered on its own line with a bold `place` label.
+   */
+  howToFind?: {
+    text: string;
+    /** When true, `spots` render as a numbered list (ordered steps). */
+    ordered?: boolean;
+    spots?: { place?: string; detail: string }[];
+  };
   spriteUrl?: string;
 }
 
@@ -8541,6 +8552,879 @@ const POKEMON_DATA: PokemonInput[] = [
       'Group Activities',
       'Exercise',
       'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 273,
+    name: 'Rampardos',
+    classification: 'Head Butt Pokémon',
+    types: ['Rock'],
+    height: '5\'03" (1.6m)',
+    weight: '226.0lbs (102.5kg)',
+    specialties: ['Crush', 'Litter'],
+    idealHabitat: 'Dry',
+    localHabitats: [
+      {
+        name: 'Headbutt fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Metal stuff',
+      'Luxury',
+      'Exercise',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 274,
+    name: 'Shieldon',
+    classification: 'Shield Pokémon',
+    types: ['Rock', 'Steel'],
+    height: '1\'08" (0.5m)',
+    weight: '125.7lbs (57kg)',
+    specialties: ['Crush'],
+    idealHabitat: 'Dry',
+    localHabitats: [
+      {
+        name: 'Armor fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Metal stuff',
+      'Luxury',
+      'Round stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 275,
+    name: 'Bastiodon',
+    classification: 'Shield Pokémon',
+    types: ['Rock', 'Steel'],
+    height: '4\'03" (1.3m)',
+    weight: '329.6lbs (149.5kg)',
+    specialties: ['Crush', 'Litter'],
+    idealHabitat: 'Dry',
+    localHabitats: [
+      {
+        name: 'Shield fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Metal stuff',
+      'Luxury',
+      'Exercise',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 276,
+    name: 'Tyrunt',
+    classification: 'Royal Heir Pokémon',
+    types: ['Rock', 'Dragon'],
+    height: '2\'07" (0.8m)',
+    weight: '57.3lbs (26.0kg)',
+    specialties: ['Crush'],
+    idealHabitat: 'Dry',
+    localHabitats: [
+      {
+        name: 'Jaw fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Lots of fire',
+      'Luxury',
+      'Exercise',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 277,
+    name: 'Tyrantrum',
+    classification: 'Despot Pokémon',
+    types: ['Rock', 'Dragon'],
+    height: '8\'02" (2.5m)',
+    weight: '595.2lbs (270.0kg)',
+    specialties: ['Crush', 'Litter'],
+    idealHabitat: 'Dry',
+    localHabitats: [
+      {
+        name: 'Despot fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Lots of fire',
+      'Luxury',
+      'Exercise',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 278,
+    name: 'Amaura',
+    classification: 'Tundra Pokémon',
+    types: ['Rock', 'Ice'],
+    height: '4\'03" (1.3m)',
+    weight: '55.6lbs (25.2kg)',
+    specialties: ['Crush'],
+    idealHabitat: 'Cool',
+    localHabitats: [
+      {
+        name: 'Sail fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Shiny stuff',
+      'Group Activities',
+      'Containers',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 279,
+    name: 'Aurorus',
+    classification: 'Tundra Pokémon',
+    types: ['Rock', 'Ice'],
+    height: '8\'10" (2.7m)',
+    weight: '496.0lbs (225.0kg)',
+    specialties: ['Crush', 'Litter'],
+    idealHabitat: 'Cool',
+    localHabitats: [
+      {
+        name: 'Tundra fossil display',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Stone stuff',
+      'Hard stuff',
+      'Shiny stuff',
+      'Noisy stuff',
+      'Symbols',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 280,
+    name: 'Eevee',
+    classification: 'Evolution Pokémon',
+    types: ['Normal'],
+    height: '1\'00" (0.3m)',
+    weight: '14.3lbs (6.5kg)',
+    specialties: ['Trade'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: 'Pretty flower bed',
+        locations: 'any',
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Soft stuff',
+      'Stone stuff',
+      'Cute stuff',
+      'Letters and words',
+      'Group Activities',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 281,
+    name: 'Vaporeon',
+    classification: 'Bubble Jet Pokémon',
+    types: ['Water'],
+    height: '3\'03" (1m)',
+    weight: '63.9lbs (29kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [
+      {
+        name: 'Boundless blue beverage',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Cleanliness',
+      'Cute stuff',
+      'Pretty flowers',
+      'Watching stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 282,
+    name: 'Jolteon',
+    classification: 'Lightning Pokémon',
+    types: ['Electric'],
+    height: '2\'07" (0.8m)',
+    weight: '54.0lbs (24.5kg)',
+    specialties: ['Generate'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: 'Electrifying potatoes',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Electronics',
+      'Shiny stuff',
+      'Cute stuff',
+      'Glass stuff',
+      'Sharp stuff',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 283,
+    name: 'Flareon',
+    classification: 'Flame Pokémon',
+    types: ['Fire'],
+    height: '2\'11" (0.9m)',
+    weight: '55.1lbs (25kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: 'Burning-hot spice',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of fire',
+      'Wooden stuff',
+      'Cute stuff',
+      'Metal stuff',
+      'Rides',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 284,
+    name: 'Espeon',
+    classification: 'Sun Pokémon',
+    types: ['Psychic'],
+    height: '2\'11" (0.9m)',
+    weight: '58.4lbs (26.5kg)',
+    specialties: ['Gather'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: 'Elegant daytime treats',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Strange stuff',
+      'Nice breezes',
+      'Cute stuff',
+      'Complicated stuff',
+      'Watching stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 285,
+    name: 'Umbreon',
+    classification: 'Moonlight Pokémon',
+    types: ['Dark'],
+    height: '3\'03" (1m)',
+    weight: '59.5lbs (27kg)',
+    specialties: ['Search'],
+    idealHabitat: 'Dark',
+    localHabitats: [
+      {
+        name: 'Dark-chocolate cookies',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Shiny stuff',
+      'Luxury',
+      'Cute stuff',
+      'Letters and words',
+      'Watching stuff',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 286,
+    name: 'Leafeon',
+    classification: 'Verdant Pokémon',
+    types: ['Grass'],
+    height: '3\'03" (1m)',
+    weight: '56.2lbs (25.5kg)',
+    specialties: ['Grow'],
+    idealHabitat: 'Bright',
+    localHabitats: [
+      {
+        name: 'Leafy greens sandwich',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of nature',
+      'Pretty flowers',
+      'Cute stuff',
+      'Fabric',
+      'Healing',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 287,
+    name: 'Glaceon',
+    classification: 'Fresh Snow Pokémon',
+    types: ['Ice'],
+    height: '2\'07" (0.8m)',
+    weight: '57.1lbs (25.9kg)',
+    specialties: ['Trade'],
+    idealHabitat: 'Cool',
+    localHabitats: [
+      {
+        name: 'Chilly shaved ice',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Lots of water',
+      'Shiny stuff',
+      'Cute stuff',
+      'Glass stuff',
+      'Group Activities',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 288,
+    name: 'Sylveon',
+    classification: 'Intertwining Pokémon',
+    types: ['Fairy'],
+    height: '3\'03" (1m)',
+    weight: '51.8lbs (23.5kg)',
+    specialties: ['Hype'],
+    idealHabitat: 'Warm',
+    localHabitats: [
+      {
+        name: 'Lovely ribbon cake',
+        locations: ['Palette Town', 'Cloud Island'],
+        rarity: 'Common',
+        availableTimes: ['Morning', 'Day', 'Evening', 'Night'],
+        availableWeather: ['Sun', 'Cloud', 'Rain'],
+      },
+    ],
+    favorites: [
+      'Cute stuff',
+      'Lots of nature',
+      'Fabric',
+      'Noisy stuff',
+      'Round stuff',
+      'Sweet flavors',
+    ],
+  },
+  {
+    dexNumber: 289,
+    name: 'Kyogre',
+    classification: 'Sea Basin Pokémon',
+    types: ['Water'],
+    height: '14\'09" (4.5m)',
+    weight: '776.0lbs (352kg)',
+    specialties: [],
+    idealHabitat: 'Humid',
+    localHabitats: [],
+    howToFind: {
+      text:
+        'Kyogre is awakened during the Withered Wasteland storyline when a rain dance party is held. When you get an ominous message stating, "You sense a large presence coming from the ocean...", it means Kyogre is visiting. You can locate it at the following beaches:',
+      spots: [
+        {
+          place: 'West Coast',
+          detail:
+            'Near the broken bridge by the caves where you first met Onix.',
+        },
+        {
+          place: 'South Coast',
+          detail: 'Out in the water near the lighthouse.',
+        },
+      ],
+    },
+    favorites: [
+      'Lots of water',
+      'Ocean vibes',
+      'Luxury',
+      'Shiny stuff',
+      'Glass stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 290,
+    name: 'Raikou',
+    classification: 'Thunder Pokémon',
+    types: ['Electric'],
+    height: '6\'03" (1.9m)',
+    weight: '392.4lbs (178kg)',
+    specialties: ['Generate'],
+    idealHabitat: 'Bright',
+    localHabitats: [],
+    howToFind: {
+      text:
+        'Unlocking and permanently recruiting the Legendary Electric-type Raikou is a multi-step process. First, you must complete the Bleak Beach story (powering up the lighthouse to wake up Snorlax). Afterward, you can hunt Raikou on Dream Islands using the Pikachu Plush/Doll.',
+      ordered: true,
+      spots: [
+        {
+          place: 'Get the Pikachu Doll',
+          detail:
+            'You can find the required doll by smashing glowing or shiny blocks in the overworld.',
+        },
+        {
+          place: 'Summon Drifloon',
+          detail:
+            'Place the Pikachu Doll anywhere on the ground to summon Drifloon, who will offer to fly you to a Dream Island.',
+        },
+        {
+          place: 'Explore the Island',
+          detail:
+            "Travel deep into the island's central cave system to find a legendary shrine structure.",
+        },
+        {
+          place: 'Pikachu Dream Island',
+          detail:
+            'Using the Pikachu Doll takes you to the Pikachu Ocean Dream Island, where Raikou has a random chance of appearing.',
+        },
+        {
+          place: 'Permanently Befriend',
+          detail:
+            'If it appears, speak to Raikou to have it return with you to your town, where you can move it into a permanent habitat.',
+        },
+      ],
+    },
+    favorites: [
+      'Electronics',
+      'Nice breezes',
+      'Shiny stuff',
+      'Glass stuff',
+      'Luxury',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 291,
+    name: 'Entei',
+    classification: 'Volcano Pokémon',
+    types: ['Fire'],
+    height: '6\'11" (2.1m)',
+    weight: '436.5lbs (198kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To find and befriend Entei, travel to the Volcanic Dream Island using the Arcanine Doll. Explore deep within the caves until you find a sealed area surrounded by lava blocks, then interact with Entei to trigger a cutscene and invite him back to your village.",
+      spots: [
+        {
+          place: "Travel to the island",
+          detail: "Call on Drifloon to take you to the Volcanic Dream Island (using the Arcanine Doll)."
+        },
+        {
+          place: "Do Not Move",
+          detail: "Once you load in, stay exactly where you are."
+        },
+        {
+          place: "Check Your Pokédex",
+          detail: "Open your Pokédex and press Y to apply the filters."
+        },
+        {
+          place: "Apply Filters",
+          detail: "Set Registration Status to All and Location to In this area."
+        },
+        {
+          place: "Verify",
+          detail: "You should see Ditto, Drifloon, and a question mark ? or Entei's silhouette. If you don't see him, you can either wait for a daily reset or time travel."
+        },
+        {
+          place: "Befriend",
+          detail: " Once you break through the lava blocks, speak to Entei and follow the dialogue to bring him to your town."
+        },
+      ]
+    },
+    favorites: [
+      'Lots of fire',
+      'Stone stuff',
+      'Symbols',
+      'Exercise',
+      'Luxury',
+      'Bitter flavors',
+    ],
+  },
+  {
+    dexNumber: 292,
+    name: 'Suicune',
+    classification: 'Aurora Pokémon',
+    types: ['Water'],
+    height: '6\'07" (2m)',
+    weight: '412.3lbs (187kg)',
+    specialties: ['Water'],
+    idealHabitat: 'Humid',
+    localHabitats: [],
+    howToFind: {
+      text: "To find Suicune, place the Eevee Poké Doll down and have Drifloon take you to the Wasteland Dream Island. Explore the caves to the center of the island, use Rock Smash to break through the Ice block barrier deep inside, and find Suicune.",
+      ordered: true,
+      spots: [
+        {
+          detail: "Place the Eevee doll in your world and interact with it to summon Drifloon."
+        },
+        {
+          detail: "Travel to the Wasteland Dream Island."
+        },
+        {
+          detail: "Head to the rocky mountain area in the center of the island and look for the cave entrances."
+        },
+        {
+          detail: "Proceed as deep as you can into the caves until you find a wall of solid ice."
+        },
+        {
+          detail: "Use Rock Smash to break through the ice wall and speak with Suicune to befriend it and bring it back."
+        },
+      ]
+    },
+    favorites: [
+      'Lots of water',
+      'Ocean vibes',
+      'Cleanliness',
+      'Watching stuff',
+      'Healing',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 293,
+    name: 'Volcanion',
+    classification: 'Steam Pokémon',
+    types: ['Fire', 'Water'],
+    height: '5\'07" (1.7m)',
+    weight: '429.9lbs (195kg)',
+    specialties: ['Burn'],
+    idealHabitat: 'Warm',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To have Volcanion move into your town after completing the Rocky Ridge story, you must craft a Cannon and a Firework, hold a cooking party with Chef Dente, and fire the cannon while the party curry is cooking.",
+      spots: [
+        {
+          detail: "First, complete the main story in the Rocky Ridge area. Doing this automatically unlocks the crafting recipes for the Cannon and Fireworks."
+        },
+        {
+          detail: "Craft a Cannon (1x Iron Ingot, 1x Lumber, 1x Vine Rope) and a Firework (1x Poké Metal, 1x Sturdy Stick, 1x Glowing Stone, and Paint)"
+        },
+        {
+          detail: "Set up your party area, place decorations, and talk to DJ RHDM (or Rotom) to check your current vibe/hype level. Decorate the area until your hype reaches 100."
+        },
+        {
+          detail: "With the hype at 100, use the Party Cooking Pot to make your curry. You'll need five specific Pokémon on your team for the dish, including Chef Dente."
+        },
+        {
+          detail: "While the curry is bubbling and confetti is in the air, place your crafted Cannon near the cooking pot and load it with your Firework. Launch it! This will trigger an animation where Volcanion arrives at the party. Speak to him and invite him to live in your town."
+        }
+      ]
+    },
+    favorites: [
+      'Lots of fire',
+      'Lots of water',
+      'Stone stuff',
+      'Containers',
+      'Symbols',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 294,
+    name: 'Articuno',
+    classification: 'Freeze Pokémon',
+    types: ['Ice', 'Flying'],
+    height: '5\'07" (1.7m)',
+    weight: '122.1lbs (55.4kg)',
+    specialties: ['Fly'],
+    idealHabitat: 'Cool',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To obtain Articuno, you need to find the Freezing Chambers blueprint and gather the necessary construction materials.",
+      spots: [
+        {
+          detail: "Travel to the Pallet Town sandbox area. The blueprint for the Freezing Chambers is located on a stone pedestal north of Pallet Town, situated in the water. You can easily fly around as Magnemite to locate it."
+        },
+        {
+          detail: "You will need a large flat plot of land, and 50 Stone, 50 Ice, 50 Crystal Fragments, and 10 Pokémetal."
+        },
+        {
+          detail: "To start construction, you will need to recruit 15 Pokémon. Once the building process is finished (which you can speed up by sleeping until the next day), enter the Freezing Chambers to encounter and befriend Articuno."
+        }
+      ]
+    },
+    favorites: [
+      'Lots of water',
+      'Nice breezes',
+      'Shiny stuff',
+      'Symbols',
+      'Luxury',
+      'Sour flavors',
+    ],
+  },
+  {
+    dexNumber: 295,
+    name: 'Zapdos',
+    classification: 'Electric Pokémon',
+    types: ['Electric', 'Flying'],
+    height: '5\'03" (1.6m)',
+    weight: '116.0lbs (52.6kg)',
+    specialties: ['Fly'],
+    idealHabitat: 'Bright',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To get Zapdos, you need to find the Abandoned Power Plant kit in Pallet Town and build it.",
+      spots: [
+        {
+          detail: "You can acquire the Abandoned Power Plant kit for free in the Pallet Town multiplayer sandbox biome. Look through the three large land formations to find the yellow Pokéball containing the kit."
+        },
+        {
+          detail: "You will need 50 Copper Ingots, 50 Iron Ingots, 50 Sealass Fragments, 50 Bricks, and 10 Pokémetal."
+        },
+        {
+          detail: "Find a large, flat, open area to place the power plant. Assign 15 Pokémon to the project, making sure your team includes at least one Pokémon with each of the following abilities: Build, Crush, Fly, and Generate."
+        },
+        {
+          detail: "Once the building finishes overnight, Zapdos will appear in your world."
+        }
+      ]
+    },
+    favorites: [
+      'Electronics',
+      'Nice breezes',
+      'Glass stuff',
+      'Symbols',
+      'Luxury',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 296,
+    name: 'Moltres',
+    classification: 'Flame Pokémon',
+    types: ['Fire', 'Flying'],
+    height: '6\'07" (2m)',
+    weight: '132.3lbs (60kg)',
+    specialties: ['Fly'],
+    idealHabitat: 'Warm',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To get Moltres, you need to find the Altar of Flame kit in Pallet Town and build it.",
+      spots: [
+        {
+          detail: "The kit can be found on the northwestern island, on top of the altar."
+        },
+        {
+          detail: "You will need 50 Copper Ingots, 50 Gold Ingots, 50 Lava Rocks, and 10 Pokémetal."
+        },
+        {
+          detail: "Find a large, flat, open area to place the Altar of Flame kit. Assign 15 Pokémon to the project, making sure your team includes at least one Pokémon with each of the following abilities: Build, Burn, Fly, and Crush."
+        },
+        {
+          detail: "Once the building finishes overnight, Moltres will appear in your world."
+        }
+      ]
+    },
+    favorites: [
+      'Lots of fire',
+      'Nice breezes',
+      'Stone stuff',
+      'Symbols',
+      'Luxury',
+      'Spicy flavors',
+    ],
+  },
+  {
+    dexNumber: 297,
+    name: 'Lugia',
+    classification: 'Diving Pokémon',
+    types: ['Psychic', 'Flying'],
+    height: '17\'01" (5.2m)',
+    weight: '476.2lbs (216kg)',
+    specialties: [],
+    idealHabitat: 'Humid',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To befriend Lugia, you must first befriend the three Kanto Legendary Birds (Articuno, Zapdos, and Moltres) and construct their habitats in Pallet Town. Once completed, you will unlock the recipe for the Tidal Bell, which requires 5 Rare Pokémetal and 5 Silver Feathers.",
+      spots: [
+        {
+          place: "Craft the Tidal Bell",
+          detail: " Ensure you have gathered 5 Silver Feathers and 5 Rare Pokémetal (which can be farmed in the Skylands or with a Dragonite plush) to craft the bell."
+        },
+        {
+          place: "Listen for Lugia",
+          detail: "Lugia randomly flies in the sky during cloudy or rainy weather. Listen for its distinct, faint cry in the background audio, or look up to spot it."
+        },
+        {
+          place: "Summon and Befriend",
+          detail: "Place the crafted Tidal Bell on the ground and ring it only while Lugia is flying overhead in the sky. This will summon the Legendary Pokémon down to your location, allowing you to interact with it and register it to your Pokédex."
+        }
+      ]
+    },
+    favorites: [
+      'Strange stuff',
+      'Nice breezes',
+      'Lots of water',
+      'Ocean vibes',
+      'Symbols',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 299,
+    name: 'Mewtwo',
+    classification: 'Genetic Pokémon',
+    types: ['Psychic'],
+    height: '6\'07" (2m)',
+    weight: '269.0lbs (122kg)',
+    specialties: ['Teleport'],
+    idealHabitat: 'Dark',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To get Mewtwo, complete the main story in the Sparkling Skylands to unlock him, obtain the Dragonite Poké Doll to access Skydream Island, and explore its deep caves. Once you spot his distinct steel-plated enclosure, simply interact with him and he will become your friend.",
+      spots: [
+        {
+          place: "Progress the Story",
+          detail: "Complete the main story in the Sparkling Skylands where you will encounter Mewtwo for the first time."
+        },
+        {
+          place: "Get the Dragonite Poké Doll",
+          detail: "Acquire the Dragonite Poké Doll. This key item grants you access to travel to Skydream Island."
+        },
+        {
+          place: "Explore the Deep Caves",
+          detail: "Head to Skydream Island and travel daily into the depths of its cave networks. Look for a deep, metallic, steel-plated area."
+        },
+        {
+          place: "Befriend Him",
+          detail: "Break through to the hidden room, talk directly to Mewtwo, and he will join your island as a resident."
+        }
+      ]
+    },
+    favorites: [
+      'Strange stuff',
+      'Watching stuff',
+      'Letters and words',
+      'Complicated stuff',
+      'Stone stuff',
+      'Dry flavors',
+    ],
+  },
+  {
+    dexNumber: 300,
+    name: 'Mew',
+    classification: 'New Species Pokémon',
+    types: ['Psychic'],
+    height: '1\'04" (0.4m)',
+    weight: '8.8lbs (4kg)',
+    specialties: ['Teleport'],
+    idealHabitat: 'Warm',
+    localHabitats: [],
+    howToFind: {
+      ordered: true,
+      text: "To unlock the mythical Pokémon Mew, you need to collect 27 mysterious slates hidden in golden artifact spots and solve the Unown mural puzzle behind the Withered Wasteland Pokémon Center. Placing all 27 slates on the mural correctly will reward you with Mew.",
+      spots: [
+        {
+          place: "Find the Mural",
+          detail: "Head to the Withered Wasteland. Behind the Pokémon Center, break the north wall and make a left to find the hidden ruin containing a giant stone mural."
+        },
+        {
+          place: "Collect the Slates",
+          detail: "Break glowing blocks across all environments to unearth random mysterious slates (you can use your Dowsing Machine to find them more easily)."
+        },
+        {
+          place: "Match the Symbols",
+          detail: "When you pick up a slate, inspect its back to see the matching Unown symbol. Place each slate in its corresponding slot on the mural."
+        },
+        {
+          place: "Summon Mew",
+          detail: "Once all 27 slates are in place, the mural will rumble, and Mew will appear. Talk to Mew to become buddies and invite it to live on your island."
+        }
+      ]
+    },
+    favorites: [
+      'Strange stuff',
+      'Watching stuff',
+      'Luxury',
+      'Complicated stuff',
+      'Play spaces',
+      'Sweet flavors',
     ],
   },
 ];

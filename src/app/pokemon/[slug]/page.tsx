@@ -100,7 +100,9 @@ export default async function PokemonPage({
                     label="Specialties"
                     value={
                         <div className="flex flex-col gap-2">
-                            {p.specialties.map(s => (
+                            {p.specialties.length === 0 ? (
+                                <span className="text-sm text-sand-500 italic">Unknown</span>
+                            ) : p.specialties.map(s => (
                                 <span key={s} className="flex items-center gap-2">
                                   <Image
                                       src={specialtyIcon(s)}
@@ -127,6 +129,45 @@ export default async function PokemonPage({
             </section>
 
             <Section title="Local Habitats" hint="Specific spots where they nest">
+                {p.howToFind && (
+                    <div className="mb-4 rounded-2xl border-2 border-leaf-200 bg-leaf-50/70 p-4 text-sm text-leaf-800 leading-relaxed">
+                        <p>
+                            <span className="mr-1.5">🔎</span>{p.howToFind.text}
+                        </p>
+                        {p.howToFind.spots && p.howToFind.spots.length > 0 && (
+                            p.howToFind.ordered ? (
+                                <ol className="mt-3 flex flex-col gap-1.5 list-decimal pl-5">
+                                    {p.howToFind.spots.map((spot, index) => (
+                                        <li key={spot.place ?? `detail-${index}`} className="pl-1">
+                                            {spot.place && (
+                                                <>
+                                                    <span className="font-semibold">{spot.place}:</span>{" "}
+                                                </>
+                                            )}
+                                            <span>{spot.detail}</span>
+                                        </li>
+                                    ))}
+                                </ol>
+                            ) : (
+                                <ul className="mt-3 flex flex-col gap-1.5">
+                                    {p.howToFind.spots.map((spot, index) => (
+                                        <li key={spot.place ?? `detail-${index}`} className="flex gap-1.5">
+                                            {spot.place && (
+                                                <span className="font-semibold">{spot.place}:</span>
+                                            )}
+                                            <span>{spot.detail}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )
+                        )}
+                    </div>
+                )}
+                {p.localHabitats.length === 0 ? (
+                    <p className="text-sm text-sand-500 italic">
+                        Not attracted by any habitat — obtained through other means.
+                    </p>
+                ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {p.localHabitats.map(h => {
                         const habitatSlug = h.name.toLowerCase().replace(/\s/g, "-");
@@ -190,6 +231,7 @@ export default async function PokemonPage({
                         )
                     })}
                 </div>
+                )}
             </Section>
 
             <Section title="Favorites" hint="Things this Pokémon enjoys">
