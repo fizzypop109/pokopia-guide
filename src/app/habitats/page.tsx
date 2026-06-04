@@ -1,6 +1,5 @@
 import { allHabitats, allIdealHabitats } from '@/data/pokemon';
 import { HabitatExplorer } from '@/components/HabitatExplorer';
-import { ScrollToTop } from '@/components/ScrollToTop';
 
 export const metadata = { title: 'Habitats — Pokopia Guide' };
 
@@ -18,7 +17,6 @@ export default function HabitatsPage() {
         </p>
       </div>
       <HabitatExplorer habitats={habitats} idealHabitats={allIdealHabitats()} />
-      <ScrollToTop />
     </div>
   );
 }

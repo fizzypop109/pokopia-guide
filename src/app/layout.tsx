@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Baloo_2, Nunito, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
+import { ScrollToTop } from '@/components/ScrollToTop';
 import { site } from '@/config/site';
 
 const baloo = Baloo_2({
@@ -37,12 +38,13 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-sand-800">
         <Header />
         <main className="flex-1">{children}</main>
-        <footer className="mt-8 border-t-2 border-dashed border-sand-300 py-6 text-center text-xs text-sand-500">
+        <footer className="mt-8 border-t-2 border-dashed border-sand-300 px-4 sm:px-6 py-6 text-center text-xs text-sand-500">
           <span className="inline-flex items-center gap-1.5">
             <span aria-hidden>🌿</span>
             Pokémon names and data © Nintendo / Game Freak. Fan-made guide.
           </span>
         </footer>
+        <ScrollToTop />
       </body>
     </html>
   );

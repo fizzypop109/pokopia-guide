@@ -1,5 +1,4 @@
 import { PokemonExplorer } from '@/components/PokemonExplorer';
-import { ScrollToTop } from '@/components/ScrollToTop';
 import {
   POKEMON,
   allIdealHabitats,
@@ -29,7 +28,6 @@ export default function Home() {
         specialties={allSpecialties()}
         rarities={allRarities()}
       />
-      <ScrollToTop />
     </div>
   );
 }

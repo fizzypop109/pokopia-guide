@@ -149,16 +149,20 @@ export default async function PokemonPage({
                                     ))}
                                 </ol>
                             ) : (
-                                <ul className="mt-3 flex flex-col gap-1.5">
+                                <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5">
                                     {p.howToFind.spots.map((spot, index) => (
-                                        <li key={spot.place ?? `detail-${index}`} className="flex gap-1.5">
-                                            {spot.place && (
-                                                <span className="font-semibold">{spot.place}:</span>
+                                        <div key={spot.place ?? `detail-${index}`} className="contents">
+                                            {spot.place ? (
+                                                <>
+                                                    <dt className="font-semibold">{spot.place}:</dt>
+                                                    <dd>{spot.detail}</dd>
+                                                </>
+                                            ) : (
+                                                <dd className="col-span-2">{spot.detail}</dd>
                                             )}
-                                            <span>{spot.detail}</span>
-                                        </li>
+                                        </div>
                                     ))}
-                                </ul>
+                                </dl>
                             )
                         )}
                     </div>
